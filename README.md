@@ -10,14 +10,14 @@ Project execution period : 2023.02 ~
 Project Hosting : LEE-NS
 </h3>
 <br><br>
-<h2>Description)</h2>
+<h2>Description</h2>
 <br>
 <p>
 이 프로젝트는 실제 운영중인 웹사이트 중 하나를 선정하여 그것의 사본을 만들어보고, 그 과정을 통하여 웹사이트의 구조와 기능을 이해하고, 나아가 해당 웹사이트의 개선점을 제시하여
 적용해봄으로써 이전보다 효율적으로 구동되는 웹사이트를 만들어 보기 위한 프로젝트 입니다.  
 </p>
 <br>
-<h2>Environment)</h2>
+<h2>Environment</h2>
 <div>HTML 5</div>
 <div>CSS 3</div>
 <div>Javascript</div>
