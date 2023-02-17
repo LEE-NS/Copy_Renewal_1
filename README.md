@@ -17,7 +17,7 @@ Project Hosting : LEE-NS
 적용해봄으로써 이전보다 효율적으로 구동되는 웹사이트를 만들어 보기 위한 프로젝트 입니다.  
 </p>
 <br>
-<h2>Envirionment)</h2>
+<h2>Environment)</h2>
 <div>HTML 5</div>
 <div>CSS 3</div>
 <div>Javascript</div>
