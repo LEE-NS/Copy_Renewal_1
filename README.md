@@ -3,11 +3,11 @@
 <p>Website Copy and Renewal 1</p>
 </h1>
 <h3>
-Project Nickname : Copy_Renewal_1
+Project nickname : Copy_Renewal_1
 <br>
 Project execution period : 2023.02 ~
 <br>
-Project Hosting : LEE-NS
+Project hosting : LEE-NS
 </h3>
 <br><br>
 <h2>Description</h2>
