@@ -18,8 +18,8 @@ Project hosting : LEE-NS
 </p>
 <br>
 <h2>Environment</h2>
-<div>HTML 5</div>
-<div>CSS 3</div>
+<div>HTML</div>
+<div>CSS</div>
 <div>Javascript</div>
 <br><br><br><br><br><br>
 *** This README is on EDIT. Additions and corrections can be hold frequently. ***
