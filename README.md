@@ -1,6 +1,6 @@
 <h1>
 웹사이트 카피 및 리뉴얼 1
-<p>Website Copy & Renewal 1</p>
+<p>Website Copy and Renewal 1</p>
 </h1>
 <h3>
 Project nickname : Copy_Renewal_1
