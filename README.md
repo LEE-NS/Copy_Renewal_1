@@ -5,7 +5,7 @@
 <h3>
 Project nickname : Copy_Renewal_1
 <br>
-Project execution period : 2023.03 ~
+Project execution period : 2023.11 ~
 <br>
 Project hosting : LEE-NS
 </h3>
