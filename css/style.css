@@ -13,7 +13,10 @@
 
     background-color: aqua;
 }
-/* .gnb-btn {}
+/* .gnb-btn {
+    text-indent: -99999px;
+    background-image: url( "https://www.redcross.or.kr/m/img/mpBtnIco.png" );
+}
 .title-area {}
 .login-btn {} */
 .gnb {
