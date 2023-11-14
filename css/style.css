@@ -2,121 +2,137 @@
 /* 모바일 */
 #wrap {
     min-width: 320px;
-    height: 100vh;
     position: relative;
 }
-#header-menu-area {
+#header_menu_area {
     width: 100%;
-    height: 60px;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
 
     background-color: #888888;
 }
-.gnb-btn, .title-area, .login-btn {
+.gnb_btn, .title_area, .login_btn {
     height: 100%;
     text-indent: -99999px;
     background-position: center;
     background-repeat: no-repeat;
 }
-.gnb-btn {
-    width: 16%;
+.gnb_btn {
+    width: 50px;
     background-image: url( "https://www.redcross.or.kr/m/img/menuIco.png" );
     background-size: 18px;
     
 }
-.title-area {
+.title_area {
     width: 35%;
     background-image: url( "https://www.redcross.or.kr/m/img/logo.png" );
-    background-size: contain;
+    background-size: auto 26px;
 }
-.login-btn {
-    width: 16%;
+.login_btn {
+    width: 50px;
     background-image: url( "https://www.redcross.or.kr/m/img/mpBtnIco.png" );
     background-size: 22px;
 }
+    
 .gnb {
     width: 250px;
     background-color: #fff;
 }
-.gnb-wrap {
+.gnb_wrap {
     display: none; /* 최상단 작업으로 인해 임시 none 처리 */
 }
-.gnb-menu-d1-wrap {
+.gnb_menu_d1_wrap {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-.open-indic {
+.open_indic {
     display: inline-block;
     width: 5px;
     height: 50px;
     background-color: #ff0000;
 }
-.gnb-menu-d1-title {
+.gnb_menu_d1_title {
     width: 70%;
     padding: 15px 0;  
     text-align: center;
     font-size: 15px;
 }
-.plus-symbol-wrap {
+.plus_symbol_wrap {
     width: 20%;
 }
-.plus-symbol, .plus-symbol::after {
+.plus_symbol, .plus_symbol::after {
     display: block;
     width: 12px;
     height: 2px;
     background-color: black;
 }
-.plus-symbol {
+.plus_symbol {
     margin: 24px 0 0 20px;
 }
-.plus-symbol::after {
+.plus_symbol::after {
     content: "";
     transform: rotate(90deg);
 }
-.gnb-menu-d1 {
-    display: none;
+.gnb_menu_d1 {
+    display: none; /* 임시 */
 }
-.fixed-menu-wrap {
-    position: relative;
-}
-.fixed-menu {
+.fixed_menu {
     width: 100%;
     height: 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: fixed;
     bottom: 0;
     left: 0;
     
     background-color: #cd4831;
 }
-.fixed-menu-item {
-    width: 60px;
-    margin: 0 10px;
+.fixed_menu_item {
+    width: 100%;
+    margin: 0 30px;
 }
-.fixed-menu-item div {
+.fixed_menu_item div {
     position: relative;
     width: 100%;
     height: 60%;
 }
-.fixed-menu-item img {
+.fixed_menu_item img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.7);
 }
-.fixed-menu-item p {
-    width: 100%;
+.fixed_menu_item p {
     height: 40%;
     text-align: center;
     font-size: 14px;
     letter-spacing: -1px;
     color: #fff;
 }
+.main_slide_wrap {
+    width: 100%;
+    margin-top: 50px;
+    overflow-x: hidden;
+}
+.main_slide_all {
+    display: flex;
+}
+/* .main-slide:nth-child(1) {} */
 
-/* 작업용 임시 분리 */
+/* .main_slide {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+ */
+
+
+
 
 /* 태블릿 */
 @media ( min-width: 768px ) {}
