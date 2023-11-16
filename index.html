@@ -11,77 +11,82 @@
 <body>
     <div id="wrap">
         <header id="header">
-            <div id="header_menu_area">
+            <div class="fixed_menu_top">
                 <p class="gnb_btn">메뉴</p>
                 <h1 class="title_area">대한적십자사</h1>
                 <p class="login_btn">로그인</p>
             </div>
-            <!-- 최상단 영역 -->
-            <div class="main_slide_wrap">
-                <ul class="main_slide_all">
-                    <li class="main_slide">
-                        <a href="#">
-                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/82/2482/2482_mob/&amp;display_filename=" alt="s1_세이빙링">
-                        </a>
-                    </li>
-                    <li class="main_slide">
-                        <a href="#">
-                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/62/2862/2862_mob/&amp;display_filename=" alt="s2_">
-                        </a>
-                    </li>
-                    <li class="main_slide">
-                        <a href="#">
-                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/62/2962/2962_mob/&amp;display_filename=" alt="s3_">
-                        </a>
-                    </li>
-                    <li class="main_slide">
-                        <a href="#">
-                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/2/3002/3002_mob/&amp;display_filename=" alt="s4_">
-                        </a>
-                    </li>
-                    <li class="main_slide">
-                        <a href="#">
-                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/63/2963/2963_mob/&amp;display_filename=" alt="s5_">
-                        </a>
-                    </li>
-                </ul>
-                <!-- 메인 슬라이드 이미지 -->
-                <div class="slide_indic">
-                    <ul>
-                        <li class="indic_on"></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <!-- 슬라이드 인디케이터 -->
-            </div>
-            <!-- 최상단 메인 슬라이드 -->
+            <!-- 상단 fixed 메뉴 -->
+            <ul class="fixed_menu_bottom">
+                <li>
+                    <div>
+                        <img src="https://www.redcross.or.kr/images/main_v15/icon/q01_m.svg" alt="후원참여">
+                    </div>
+                    <div>
+                        <span class="item_name">후원참여</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img src="https://www.redcross.or.kr/images/main_v15/icon/q02.svg" alt="교육신청">
+                    </div>
+                    <div>
+                        <span class="item_name">교육신청</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img src="https://www.redcross.or.kr/images/main_v15/icon/q03.svg" alt="RCY">
+                    </div>
+                    <div>
+                        <span class="item_name">RCY</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img src="https://www.redcross.or.kr/images/main_v15/icon/q04.svg" alt="봉사참여">
+                    </div>
+                    <div>
+                        <span class="item_name">봉사참여</span>
+                    </div>
+                </li>
+            </ul>
+            <!-- 하단 fixed 메뉴 -->
             <div class="gnb_wrap">
-                <div class="gnb">
-                    <div class="gnb_menu_wrap">
-                        <div class="gnb_menu_d1_wrap">
-                            <span class="open_indic"></span>
-                            <p class="gnb_menu_d1_title">대한적십자사 소개</p>
-                            <div class="plus_symbol_wrap">
-                                <span class="plus_symbol"></span>
+                <div class="gnb_exit">
+                    <span></span>
+                </div>
+                <!-- gnb 나가기 버튼 -->
+                <div class="gnb">                              
+                    <ul class="gnb_menu">
+                        <li class="gnb_menu_d0">
+                            <div class="gnb_menu_d0_title">
+                                <span class="open_indic"></span>
+                                <p class="gnb_menu_d1_title">대한적십자사 소개</p>
+                                <div class="plus_symbol">
+                                    <span></span>
+                                </div>
                             </div>
                             <ul class="gnb_menu_d1">
                                 <li class="gnb_menu_d1_item">
                                     대한적십자사 소개
                                 </li>
-                                <ul class="gnb_menu_d2">
-                                    대한적십자사
-                                    <li class="gnb_menu_d2_item">기관 소개</li>
-                                    <li class="gnb_menu_d2_item">인사말</li>
-                                    <li class="gnb_menu_d2_item">브랜드 CI</li>
-                                    <li class="gnb_menu_d2_item">연혁</li>
-                                    <li class="gnb_menu_d2_item">조직 (조직도)</li>
-                                    <li class="gnb_menu_d2_item">업무별 담당자</li>
-                                    <li class="gnb_menu_d2_item">오시는 길</li>
-                                    <li class="gnb_menu_d2_item">사업장현황</li>
-                                </ul>
+                                <div class="gnb_menu_d2_wrap">
+                                    <div class="down_symbol">
+                                        <span></span>
+                                    </div>
+                                    <ul class="gnb_menu_d2">
+                                        대한적십자사
+                                        <li class="gnb_menu_d2_item">기관 소개</li>
+                                        <li class="gnb_menu_d2_item">인사말</li>
+                                        <li class="gnb_menu_d2_item">브랜드 CI</li>
+                                        <li class="gnb_menu_d2_item">연혁</li>
+                                        <li class="gnb_menu_d2_item">조직 (조직도)</li>
+                                        <li class="gnb_menu_d2_item">업무별 담당자</li>
+                                        <li class="gnb_menu_d2_item">오시는 길</li>
+                                        <li class="gnb_menu_d2_item">사업장현황</li>
+                                    </ul>
+                                </div>
                                 <ul class="gnb_menu_d2">
                                     국제적십자운동
                                     <li class="gnb_menu_d2_item">탄생배경</li>
@@ -202,42 +207,57 @@
                                     </ul>
                                 </ul>
                             </ul>
-                        </div>
+                        </li>
                         <!-- gnb 1. 대한적십자사 소개 -->
-                    </div>
+                    </ul>
                 </div>
             </div>
-            <!-- gnb -->
-            <ul class="fixed_menu hide">
-                <li class="fixed_menu_item">
-                    <div>
-                        <img src="https://www.redcross.or.kr/images/main_v15/icon/q01_m.svg" alt="후원참여">
-                    </div>
-                    <p>후원참여</p>
-                </li>
-                <li class="fixed_menu_item">
-                    <div>
-                        <img src="https://www.redcross.or.kr/images/main_v15/icon/q02.svg" alt="교육신청">
-                    </div>
-                    <p>교육신청</p>
-                </li>
-                <li class="fixed_menu_item">
-                    <div>
-                        <img src="https://www.redcross.or.kr/images/main_v15/icon/q03.svg" alt="RCY">
-                    </div>
-                    <p>RCY</p>
-                </li>
-                <li class="fixed_menu_item">
-                    <div>
-                        <img src="https://www.redcross.or.kr/images/main_v15/icon/q04.svg" alt="봉사참여">
-                    </div>
-                    <p>봉사참여</p>
-                </li>
-            </ul>
-            <!-- 하단 고정 메뉴 -->
+            <!-- gnb -->    
         </header>
         <!-- header -->
-        <main id="container"></main>
+        <main id="container">
+            <div class="main_slide_wrap">
+                <ul class="main_slide_all">
+                    <li class="main_slide">
+                        <a href="#">
+                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/82/2482/2482_mob/&amp;display_filename=" alt="s1_세이빙링">
+                        </a>
+                    </li>
+                    <li class="main_slide">
+                        <a href="#">
+                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/62/2862/2862_mob/&amp;display_filename=" alt="s2_">
+                        </a>
+                    </li>
+                    <li class="main_slide">
+                        <a href="#">
+                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/62/2962/2962_mob/&amp;display_filename=" alt="s3_">
+                        </a>
+                    </li>
+                    <li class="main_slide">
+                        <a href="#">
+                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/2/3002/3002_mob/&amp;display_filename=" alt="s4_">
+                        </a>
+                    </li>
+                    <li class="main_slide">
+                        <a href="#">
+                            <img src="https://www.redcross.or.kr/common/file_util.do?action=download&amp;filepath=redcross_mainvisual/63/2963/2963_mob/&amp;display_filename=" alt="s5_">
+                        </a>
+                    </li>
+                </ul>
+                <!-- 메인 슬라이드 이미지 -->
+                <div class="slide_indic">
+                    <ul>
+                        <li class="indic_on"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <!-- 슬라이드 인디케이터 -->
+            </div>
+            <!-- 메인 슬라이드 -->
+        </main>
         <!-- main -->
         <footer id="footer"></footer>
         <!-- footer -->

@@ -4,7 +4,12 @@
     min-width: 320px;
     position: relative;
 }
-#header_menu_area {
+/* 모바일 - header */
+#header {
+    width: 100%;
+    margin-bottom: 50px;
+}
+.fixed_menu_top {
     width: 100%;
     height: 50px;
     position: fixed;
@@ -12,6 +17,7 @@
     left: 0;
     display: flex;
     justify-content: space-between;
+    z-index: 99;
 
     background-color: #888888;
 }
@@ -37,88 +43,140 @@
     background-image: url( "https://www.redcross.or.kr/m/img/mpBtnIco.png" );
     background-size: 22px;
 }
-    /* 최상단 fixed */    
-.gnb {
-    width: 250px;
-    background-color: #fff;
-}
-.gnb_wrap {
-    display: none; /* 최상단 작업으로 인해 임시 none 처리 */
-}
-.gnb_menu_d1_wrap {
-    display: flex;
-    justify-content: space-between;
+.fixed_menu_bottom {
     width: 100%;
-}
-.open_indic {
-    display: inline-block;
-    width: 5px;
-    height: 50px;
-    background-color: #ff0000;
-}
-.gnb_menu_d1_title {
-    width: 70%;
-    padding: 15px 0;  
-    text-align: center;
-    font-size: 15px;
-}
-.plus_symbol_wrap {
-    width: 20%;
-}
-.plus_symbol, .plus_symbol::after {
-    display: block;
-    width: 12px;
-    height: 2px;
-    background-color: black;
-}
-.plus_symbol {
-    margin: 24px 0 0 20px;
-}
-.plus_symbol::after {
-    content: "";
-    transform: rotate(90deg);
-}
-.gnb_menu_d1 {
-    display: none; /* 임시 */
-}
-    /* gnb */
-.fixed_menu {
-    width: 100%;
-    height: 100px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 99;
     
     background-color: #cd4831;
 }
-.fixed_menu_item {
+.fixed_menu_bottom li {
     width: 100%;
-    margin: 0 30px;
+    margin: 0 22px;
 }
-.fixed_menu_item div {
+.fixed_menu_bottom li div:nth-child(1) {
     position: relative;
-    width: 100%;
     height: 60%;
 }
-.fixed_menu_item img {
+.fixed_menu_bottom li div:nth-child(1) img {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.5);
 }
-.fixed_menu_item p {
-    height: 40%;
+.fixed_menu_bottom li div:nth-child(2) {
+    width: fit-content;
+    margin: 0 auto;
     text-align: center;
-    font-size: 14px;
-    letter-spacing: -1px;
     color: #fff;
 }
-    /* 최상단 fixed 2 */
+.fixed_menu_bottom li div:nth-child(2) .item_name {
+    display: block;
+    box-sizing: content-box;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 100px;
+    letter-spacing: -1px;
+
+    transition: 0.2s;
+}
+.fixed_menu_bottom li:hover .item_name {
+    color: #cd4831;
+    background-color: #fff;
+}
+/* 모바일 - header - GNB */
+.gnb_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: row-reverse;
+    z-index: 100;
+}
+.gnb {   
+    width: 250px;
+    
+    background-color: #fff;
+}
+.gnb_exit {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    background-color: #111;
+}
+.gnb_exit span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    position: absolute;
+    top: 24px;
+    left: 15px;
+    transform: rotate(45deg);
+    background-color: #fafafa;
+}
+.gnb_exit span::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    position: absolute;
+    transform: rotate(90deg);
+    background-color: #fafafa;
+}
+.gnb_menu_d0_title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.gnb_menu_d0_title .open_indic {
+    display: inline-block;
+    width: 5px;
+    height: 50px;
+    background-color: #ff0000;
+}
+.gnb_menu_d0_title p {
+    width: 70%;
+    padding: 15px 0;  
+    text-align: center;
+    font-size: 15px;
+}
+.gnb_menu_d0_title .plus_symbol {
+    width: 20%;
+}
+.plus_symbol span, .plus_symbol span::after {
+    display: block;
+    width: 12px;
+    height: 2px;
+    background-color: black;
+}
+.plus_symbol span {
+    margin: 24px 0 0 20px;
+}
+.plus_symbol span::after {
+    content: "";
+    transform: rotate(90deg);
+}
+.gnb_menu_d1 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.gnb_menu_d1 .gnb_menu_d1_item {
+    padding: 10px;
+}
+
+
+/* 모바일 - main */
+#container {
+    position: relative;
+}
 .main_slide_wrap {
     position: relative;
-    margin-top: 50px;
     overflow: hidden;
 }
 .main_slide_all {
@@ -133,10 +191,9 @@
     height: auto;
     object-fit: cover;
 }
-    /* 메인 슬라이드 */
 .slide_indic {
     position: absolute;
-    bottom: 20px;
+    bottom: 3%;
     left: 50%;
     width: 100%;
     height: 12px;
