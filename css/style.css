@@ -100,6 +100,9 @@
 }
 .gnb {   
     width: 250px;
+    max-height: 100vh;
+    overflow-y: scroll;
+    /* overflow 속성의 scorll bar의 기본 스타일 해제, 새로 스타일링 */
     background-color: #fff;
 }
 .gnb_exit {
@@ -181,10 +184,9 @@
 }
 .gnb_menu_d1_item > p {
     position: relative;
-    background-color: #eee;
+    background-color: #ddd;
 }
-.gnb_menu_d1_item > p span {
-    content: "";
+.gnb_menu_d1_item > p .down_symbol {
     display: inline-block;
     position: absolute;
     top: 14px;
@@ -199,6 +201,7 @@
     padding: 0 10px;
 }
 .gnb_menu_d2_item {
+    position: relative;
     height: 40px;
     line-height: 40px;
     border-bottom: 1px solid #ccc;
@@ -206,11 +209,28 @@
 .gnb_menu_d2_item:last-child {
     border-bottom: none;
 }
+.gnb_menu_d2_item > .plus_symbol {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+}
+.gnb_menu_d2_item > .plus_symbol span {
+    background-color: #888;
+}
+.d3_expn {
+    background-color: #eee;
+}
 .gnb_menu_d3 {
-    display: none;
+    padding: 0 10px;
+    background-color: #eee;
 }
 .gnb_menu_d3_item {
-    display: none;
+    text-indent: 20px;
+    font-size: 13px;
+    border-bottom: 1px solid #ccc;
+}
+.gnb_menu_d3_item:last-child {
+    border: 0;
 }
 
 
