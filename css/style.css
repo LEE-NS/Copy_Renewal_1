@@ -100,10 +100,25 @@
 }
 .gnb {   
     width: 250px;
-    max-height: 100vh;
-    overflow-y: scroll;
-    /* overflow 속성의 scorll bar의 기본 스타일 해제, 새로 스타일링 */
+    height: 100vh;
+    overflow-y: hidden;
     background-color: #fff;
+}
+.gnb::-webkit-scrollbar {
+    width: 0.9vw;
+    transition: all 1s;
+}
+.gnb::-webkit-scrollbar-thumb, .gnb::-webkit-scrollbar-track {
+    background-clip: padding-box;
+    border-radius: 100px;
+    border: 0.3vw solid transparent;
+    background-color: #aaaaaa66;
+}
+.gnb::-webkit-scrollbar-track {
+    background-color: #aaaaaa33;
+}
+.gnb:hover {
+    overflow-y: scroll;
 }
 .gnb_exit {
     width: 50px;
