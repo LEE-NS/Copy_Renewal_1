@@ -97,28 +97,23 @@
     display: flex;
     flex-flow: row-reverse;
     z-index: 100;
+    transition: all 0.3s;
 }
 .gnb {   
     width: 250px;
     height: 100vh;
-    overflow-y: hidden;
+    overflow-y: auto;
     background-color: #fff;
 }
 .gnb::-webkit-scrollbar {
-    width: 0.9vw;
+    width: 0.7vw;
     transition: all 1s;
 }
-.gnb::-webkit-scrollbar-thumb, .gnb::-webkit-scrollbar-track {
-    background-clip: padding-box;
-    border-radius: 100px;
-    border: 0.3vw solid transparent;
-    background-color: #aaaaaa66;
+.gnb::-webkit-scrollbar-thumb {
+    background-color: #ff000066;
 }
 .gnb::-webkit-scrollbar-track {
-    background-color: #aaaaaa33;
-}
-.gnb:hover {
-    overflow-y: scroll;
+    background-color: #cd483133;
 }
 .gnb_exit {
     width: 50px;
@@ -168,7 +163,7 @@
 .plus_symbol span, .plus_symbol span::after {
     width: 12px;
     height: 2px;
-    background-color: black;
+    background-color: #111;
 }
 .plus_symbol span {
     display: block;
