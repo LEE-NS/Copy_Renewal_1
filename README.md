@@ -21,4 +21,4 @@ Project hosting : LEE-NS
 <div>CSS</div>
 <div>Javascript</div>
 <br><br><br><br><br><br>
-*** This README is on EDIT. Additions and corrections can be hold frequently. ***
+*** This README is on EDIT. Irregular additions and corrections can be hold frequently. ***
