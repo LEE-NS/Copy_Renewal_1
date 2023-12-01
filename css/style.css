@@ -26,6 +26,7 @@
     text-indent: -99999px;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 .gnb_btn {
     width: 50px;
@@ -119,6 +120,7 @@
     width: 50px;
     height: 50px;
     position: relative;
+    cursor: pointer;
     background-color: #111;
 }
 .gnb_exit span {
@@ -175,22 +177,21 @@
     transform: rotate(90deg);
 }
 .gnb_menu_d1 {
-    padding: 15px;
+    padding: 0 10px;
 }
 .gnb_menu_d1_item {
-    width: 100%;
+    line-height: 45px;
     text-indent: 10px;
     border-bottom: 1px solid #ccc;
-    font-size: 14px;
+    font-size: 13px;
     color: #444;
-}
-.gnb_menu_d1_item p, .gnb_menu_d1_item a {
-    display: block;
-    height: 40px;
-    line-height: 40px;
 }
 .gnb_menu_d1_item:last-child {
     border-bottom: none;
+}
+.gnb_menu_d1_item > p, .gnb_menu_d1_item > p > a {
+    display: block;
+    line-height: 45px;
 }
 .gnb_menu_d1_item > p {
     position: relative;
@@ -199,7 +200,7 @@
 .gnb_menu_d1_item > p .down_symbol {
     display: inline-block;
     position: absolute;
-    top: 14px;
+    top: 17px;
     right: 10px;
     width: 8px;
     height: 8px;
@@ -212,8 +213,7 @@
 }
 .gnb_menu_d2_item {
     position: relative;
-    height: 40px;
-    line-height: 40px;
+    line-height: 45px;
     border-bottom: 1px solid #ccc;
 }
 .gnb_menu_d2_item:last-child {
@@ -221,13 +221,14 @@
 }
 .gnb_menu_d2_item > .plus_symbol {
     position: absolute;
-    top: -5px;
-    right: 10px;
+    top: -3px;
+    right: 5px;
 }
 .gnb_menu_d2_item > .plus_symbol span {
     background-color: #888;
 }
 .d3_expn {
+    margin: 10px 0;
     background-color: #eee;
 }
 .gnb_menu_d3 {
@@ -235,14 +236,13 @@
     background-color: #eee;
 }
 .gnb_menu_d3_item {
-    text-indent: 20px;
-    font-size: 13px;
-    border-bottom: 1px solid #ccc;
+    text-indent: 10px;
+    font-size: 12px;
+    border-bottom: 1px dotted #ccc;
 }
 .gnb_menu_d3_item:last-child {
     border: 0;
 }
-
 
 
 /* 모바일 - main */
