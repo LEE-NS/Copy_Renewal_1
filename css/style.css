@@ -145,7 +145,8 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: #eee;
+    height: 100%;
+    background-color: #fff;
 }
 .gnb_menu_d0_title .open_indic {
     display: inline-block;
@@ -159,23 +160,33 @@
     font-size: 15px;
 }
 .plus_symbol {
+    position: relative;
     width: 20%;
 }
-.plus_symbol span, .plus_symbol span::after {
+.plus_symbol span:nth-child(1) {
+    position: absolute;
+    top: 24px;
+    right: 17px;
+    display: block;
     width: 12px;
     height: 2px;
+    border-radius: 100px;
     background-color: #111;
 }
-.plus_symbol span {
+.plus_symbol span:nth-child(2) {
+    position: absolute;
+    top: 24px;
+    right: 17px;
     display: block;
-    margin: 24px 0 0 20px;
-}
-.plus_symbol span::after {
-    display: none;
-    content: "";
+    width: 12px;
+    height: 2px;
+    border-radius: 100px;
     transform: rotate(90deg);
+    background-color: #111;
 }
 .gnb_menu_d1 {
+    height: 0;
+    overflow: hidden;
     padding: 0 10px;
 }
 .gnb_menu_d1_item {
@@ -208,6 +219,8 @@
     transform: rotate(-135deg) translateY(-5px);
 }
 .gnb_menu_d2 {
+    height: 0;
+    overflow: hidden;
     padding: 0 10px;
 }
 .gnb_menu_d2_item {
@@ -220,8 +233,8 @@
 }
 .gnb_menu_d2_item > .plus_symbol {
     position: absolute;
-    top: -3px;
-    right: 5px;
+    top: -1px;
+    right: 0px;
 }
 .gnb_menu_d2_item > .plus_symbol span {
     background-color: #888;

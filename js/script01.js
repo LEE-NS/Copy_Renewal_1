@@ -25,7 +25,7 @@ let menuD0 = document.querySelector('.gnb_menu_d0_title');
 let menuD1 = document.querySelector('.gnb_menu_d1');
 let openIndic = document.querySelector('.open_indic');
 let plusSymbol = document.getElementsByClassName('plus_symbol');
-let ctrlPlusSymbol = plusSymbol.querySelector('span');
+let ctrlPlusSymbol = document.querySelectorAll('.plus_symbol span')[1];
 
 function ctrlGnbWindow() {
     let dp = gnbWindow.style.display;
@@ -40,20 +40,33 @@ function ctrlGnbWindow() {
         gnbWindow.style.display = 'flex'
     };
 }; 
-//GNB 열기 및 닫기
+//GNB 창 열기 및 닫기
 
-/* function ctrlGnbAccrd(topMenu, bottomMenu) {
-    let accrd = menuD1.style.height;
+function ctrlGnbAccrd(topMenu ,bottomMenu) {
+    let accrd = bottomMenu.style.height;
 
-    if (accrd == 0) {
-        openIndic.style.backgroundColor = '#fff'
-        ctrlPlusSymbol
-    }
-}; */
+    if (accrd == '0px') {
+        bottomMenu.style.height = '100%';
+        topMenu.style.backgroundColor = '#eee';
+        openIndic.style.backgroundColor = '#ff0000';
+        ctrlPlusSymbol.style.transform = 'rotate(0deg)';
+        //열기
+    } else {
+        bottomMenu.style.height = '0';
+        topMenu.style.backgroundColor = '#fff';
+        openIndic.style.backgroundColor = '#fff';
+        ctrlPlusSymbol.style.transform = 'rotate(90deg)';
+        //닫기
+    };
+};
+//아코디언 메뉴 열기 및 닫기
 
 
-gnbExit.addEventListener('click', ctrlGnbWindow);
-gnbBtn.addEventListener('click', ctrlGnbWindow);
+gnbExit.addEventListener('click', () => (ctrlGnbWindow()));
+gnbBtn.addEventListener('click', () => (ctrlGnbWindow()));
 //해당 태그를 클릭할 시 GNB를 열고 닫기
 
-menuD0.addEventListener('click', ctrlGnbAccrd);
+menuD0.addEventListener('click', function() {
+    ctrlGnbAccrd(menuD0 ,menuD1)
+});
+/* 콜백에 대한 부분을 읽어볼 것 */
