@@ -21,8 +21,11 @@ let gnbWindow = document.querySelector('.gnb_wrap');
 let gnbList = document.querySelector('.gnb');
 let gnbExit = document.querySelector('.gnb_exit');
 let gnbBtn = document.querySelector('.gnb_btn');
-
-
+let menuD0 = document.querySelector('.gnb_menu_d0_title');
+let menuD1 = document.querySelector('.gnb_menu_d1');
+let openIndic = document.querySelector('.open_indic');
+let plusSymbol = document.getElementsByClassName('plus_symbol');
+let ctrlPlusSymbol = plusSymbol.querySelector('span');
 
 function ctrlGnbWindow() {
     let dp = gnbWindow.style.display;
@@ -39,9 +42,18 @@ function ctrlGnbWindow() {
 }; 
 //GNB 열기 및 닫기
 
+/* function ctrlGnbAccrd(topMenu, bottomMenu) {
+    let accrd = menuD1.style.height;
 
+    if (accrd == 0) {
+        openIndic.style.backgroundColor = '#fff'
+        ctrlPlusSymbol
+    }
+}; */
 
 
 gnbExit.addEventListener('click', ctrlGnbWindow);
 gnbBtn.addEventListener('click', ctrlGnbWindow);
 //해당 태그를 클릭할 시 GNB를 열고 닫기
+
+menuD0.addEventListener('click', ctrlGnbAccrd);

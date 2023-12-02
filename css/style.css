@@ -58,7 +58,7 @@
 }
 .fixed_menu_bottom li {
     width: 100%;
-    margin: 0 22px;
+    margin: 0 10px;
 }
 .fixed_menu_bottom li div:nth-child(1) {
     position: relative;
@@ -78,7 +78,6 @@
 }
 .fixed_menu_bottom li div:nth-child(2) .item_name {
     display: block;
-    box-sizing: content-box;
     font-size: 12px;
     padding: 2px 10px;
     border-radius: 100px;
