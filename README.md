@@ -19,6 +19,6 @@ Project hosting : LEE-NS
 <h2>Environment</h2>
 <div>HTML</div>
 <div>CSS</div>
-<div>Javascript(no Framework or Library)</div>
+<div>Javascript(Vanilla)</div>
 <br><br><br><br><br><br>
 *** This README is on EDIT. Irregular additions and corrections can be hold frequently. ***
