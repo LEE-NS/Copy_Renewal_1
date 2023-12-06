@@ -174,6 +174,7 @@
     height: 0;
     overflow: hidden;
     padding: 0 10px;
+    transition: all 0.2s;
 }
 .gnb_menu_d1_item {
     line-height: 45px;
@@ -208,6 +209,7 @@
     height: 0;
     overflow: hidden;
     padding: 0 10px;
+    transition: height 0.2s;
 }
 .gnb_menu_d2_item {
     position: relative;
@@ -231,6 +233,7 @@
 }
 .gnb_menu_d3 {
     padding: 0 10px;
+    transition: height 0.2s;
     background-color: #eee;
 }
 .gnb_menu_d3_item {
@@ -241,10 +244,8 @@
 .gnb_menu_d3_item:last-child {
     border: 0;
 }
-
 .active_menu {
     height: 100%;
-    transition: height 0.2s;
 }
 
 /* 모바일 - main */

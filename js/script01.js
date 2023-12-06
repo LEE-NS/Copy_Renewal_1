@@ -22,10 +22,6 @@ let gnbWindow = document.querySelector('.gnb_wrap');
 let gnbList = document.querySelector('.gnb');
 let gnbExit = document.querySelector('.gnb_exit');
 let gnbBtn = document.querySelector('.gnb_btn');
-let menuD0 = [...document.querySelectorAll('.gnb_menu_d0')];
-let menuD1 = [...document.querySelectorAll('.gnb_menu_d1')];
-let menuD2 = [...document.querySelectorAll('.gnb_menu_d2')];
-let menuD3 = [...document.querySelectorAll('.gnb_menu_d3')];
 
 function ctrlGnbWindow() {
     let dp = gnbWindow.style.display;
@@ -42,23 +38,31 @@ function ctrlGnbWindow() {
 }; 
 //GNB 창 열기(이거보다 훨씬 깔끔하게 할 수 있을듯. 바꾸기)
 
-function openAccrd(bottoms) {
-    bottoms.forEach(elem => {
-        let bottom = elem;
+function openAccrd(topItem, bottom) {
+    //상위 메뉴를 클릭하면 이 함수가 동작한다.
+    //이 함수는 .active_menu 클래스를 부여, 제거함으로써 메뉴의 하위 항목들을 보여주거나 감춘다.
+    let topItems = document.querySelectorAll(topItem); //예) d0의 항목
+    let bottoms = document.querySelectorAll(bottom); //예) d1의 항목창
+    topItems.forEach(function(eachTopItem) {
+        eachTopItem.addEventListener('click', () => {
+            bottoms.forEach(function(eachBottom) {
+                eachBottom.classList.contains('active_menu') ? eachBottom.classList.remove('active_menu') : eachBottom.classList.toggle('active_menu');
+            });
+        });
     });
-    for (let i = 0; i < bottoms; i++) {
-        bottoms[i].classList.remove('active_menu')
-    };
-    bottom.classList.add('active_menu');
 };
-//아코디언 형태 메뉴
+
+openAccrd('.gnb_menu_d0_item', '.gnb_menu_d1');
+openAccrd('.gnb_menu_d1_item', '.gnb_menu_d2');
+
+//아코디언 형태 메뉴, gnb_menu_d0_item이 클릭이 되면 gnb_menu_d1이 열려야한다. 그리고 d1_item이 클릭되면 d2가 열려야한다.
+//forEach 메소드 : forEach문에서 함수를 표현할 때, 매개변수는 그 배열의 요소를 가리킨다!!!!!!
+//다른 항목 클릭 시 확장된 항목창 닫기, 열려있는 항목창의 항목을 눌러도 그 확장된 항목창 닫기 ok
+// 문제점 : 클릭되는 영역 안에 확장되는 영역이 포함되어 있어서 하위 항목을 클릭하려 하면 상위 항목도 클릭을 한 것으로 취급됨
+// -> 클릭되는 영역이 확장되는 영역을 포함하지 않게 분리시켜야 한다.
+//  
 
 
 gnbExit.addEventListener('click', ctrlGnbWindow);
 gnbBtn.addEventListener('click', ctrlGnbWindow);
 //해당 태그를 클릭할 시 GNB를 열고 닫기
-
-menuD0.addEventListener('click', () => (openAccrd(menuD1)));
-menuD1.addEventListener('click', () => (openAccrd(menuD2)));
-menuD2.addEventListener('click', () => (openAccrd(menuD3)));
-//해당 태그를 클릭 시 아코디언 형태 메뉴를 열고 닫기
