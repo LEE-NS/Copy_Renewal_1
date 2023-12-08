@@ -122,7 +122,7 @@
     cursor: pointer;
     background-color: #111;
 }
-.gnb_exit span {
+.gnb_exit span, .gnb_exit span::after {
     display: block;
     width: 20px;
     height: 2px;
@@ -134,117 +134,11 @@
 }
 .gnb_exit span::after {
     content: "";
-    display: block;
-    width: 20px;
-    height: 2px;
-    position: absolute;
     transform: rotate(90deg);
-    background-color: #fafafa;
 }
-.gnb_menu_d0_title {
-    display: flex;
-    justify-content: space-between;
-    background-color: #fff;
-}
-.gnb_menu_d0_title .title {
-    width: 70%;
-    padding: 15px 0;
-    text-align: center;
-    font-size: 15px;
-}
-.plus_symbol {
-    position: relative;
-    width: 20%;
-}
-.plus_symbol span {
-    position: absolute;
-    top: 24px;
-    right: 17px;
-    display: block;
-    width: 12px;
-    height: 2px;
-    border-radius: 100px;
-    background-color: #111;
-}
-.plus_symbol span:nth-child(2) {
-    transform: rotate(90deg);
-    transition: transform 0.3s;
-}
-.gnb_menu_d1 {
-    height: 0;
-    overflow: hidden;
-    padding: 0 10px;
-    transition: all 0.2s;
-}
-.gnb_menu_d1_item {
-    line-height: 45px;
-    text-indent: 10px;
-    border-bottom: 1px solid #ccc;
-    font-size: 13px;
-    color: #444;
-}
-.gnb_menu_d1_item:last-child {
-    border-bottom: none;
-}
-.gnb_menu_d1_item > p, .gnb_menu_d1_item > p > a {
-    display: block;
-    line-height: 45px;
-}
-.gnb_menu_d1_item > p {
-    position: relative;
-    background-color: #ddd;
-}
-.gnb_menu_d1_item > p .down_symbol {
-    display: inline-block;
-    position: absolute;
-    top: 17px;
-    right: 10px;
-    width: 8px;
-    height: 8px;
-    border: solid #888;
-    border-width: 0 2px 2px 0;
-    transform: rotate(-135deg) translateY(-5px);
-}
-.gnb_menu_d2 {
-    height: 0;
-    overflow: hidden;
-    padding: 0 10px;
-    transition: height 0.2s;
-}
-.gnb_menu_d2_item {
-    position: relative;
-    line-height: 45px;
-    border-bottom: 1px solid #ccc;
-}
-.gnb_menu_d2_item:last-child {
-    border-bottom: none;
-}
-.gnb_menu_d2_item > .plus_symbol {
-    position: absolute;
-    top: -1px;
-    right: 0px;
-}
-.gnb_menu_d2_item > .plus_symbol span {
-    background-color: #888;
-}
-.d3_expn {
-    margin: 10px 0;
-    background-color: #eee;
-}
-.gnb_menu_d3 {
-    padding: 0 10px;
-    transition: height 0.2s;
-    background-color: #eee;
-}
-.gnb_menu_d3_item {
-    text-indent: 10px;
-    font-size: 12px;
-    border-bottom: 1px dotted #ccc;
-}
-.gnb_menu_d3_item:last-child {
-    border: 0;
-}
-.active_menu {
+
+
+.active {
     height: 100%;
 }
 

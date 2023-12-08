@@ -38,22 +38,7 @@ function ctrlGnbWindow() {
 }; 
 //GNB 창 열기(이거보다 훨씬 깔끔하게 할 수 있을듯. 바꾸기)
 
-function openAccrd(topItem, bottom) {
-    //상위 메뉴를 클릭하면 이 함수가 동작한다.
-    //이 함수는 .active_menu 클래스를 부여, 제거함으로써 메뉴의 하위 항목들을 보여주거나 감춘다.
-    let topItems = document.querySelectorAll(topItem); //예) d0의 항목
-    let bottoms = document.querySelectorAll(bottom); //예) d1의 항목창
-    topItems.forEach(function(eachTopItem) {
-        eachTopItem.addEventListener('click', () => {
-            bottoms.forEach(function(eachBottom) {
-                eachBottom.classList.contains('active_menu') ? eachBottom.classList.remove('active_menu') : eachBottom.classList.toggle('active_menu');
-            });
-        });
-    });
-};
 
-openAccrd('.gnb_menu_d0_item', '.gnb_menu_d1');
-openAccrd('.gnb_menu_d1_item', '.gnb_menu_d2');
 
 //아코디언 형태 메뉴, gnb_menu_d0_item이 클릭이 되면 gnb_menu_d1이 열려야한다. 그리고 d1_item이 클릭되면 d2가 열려야한다.
 //forEach 메소드 : forEach문에서 함수를 표현할 때, 매개변수는 그 배열의 요소를 가리킨다!!!!!!
@@ -66,3 +51,4 @@ openAccrd('.gnb_menu_d1_item', '.gnb_menu_d2');
 gnbExit.addEventListener('click', ctrlGnbWindow);
 gnbBtn.addEventListener('click', ctrlGnbWindow);
 //해당 태그를 클릭할 시 GNB를 열고 닫기
+
