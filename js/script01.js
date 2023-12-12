@@ -22,6 +22,7 @@ let gnbWindow = document.querySelector('.gnb_wrap');
 let gnbList = document.querySelector('.gnb');
 let gnbExit = document.querySelector('.gnb_exit');
 let gnbBtn = document.querySelector('.gnb_btn');
+let d0Titles = document.querySelectorAll('.menu_d0_title');
 
 function ctrlGnbWindow() {
     let dp = gnbWindow.style.display;
@@ -38,7 +39,18 @@ function ctrlGnbWindow() {
 }; 
 //GNB 창 열기(이거보다 훨씬 깔끔하게 할 수 있을듯. 바꾸기)
 
-
+function accrdCtrl(pointingNode, targetNode) {
+    let targets = document.querySelectorAll(targetNode);
+    targets.forEach((target) => {
+        target.classList.remove('active');
+        if(pointingNode.nextElementSibling == target) {
+            target.classList.add('active');
+        } else {
+            target.classList.remove('active');
+        }
+    });
+    console.log(`${pointingNode}가 클릭되었다. 이것의 형제 노드는 ${pointingNode.nextElementSibling}`);
+};
 //형제 노드를 찾는 속성을 사용한다. 없다면 null을 반환하기 때문에 
 //아코디언 형태 메뉴, gnb_menu_d0_item이 클릭이 되면 gnb_menu_d1이 열려야한다. 그리고 d1_item이 클릭되면 d2가 열려야한다.
 //forEach 메소드 : forEach문에서 함수를 표현할 때, 매개변수는 그 배열의 요소를 가리킨다!!!!!!
@@ -50,5 +62,6 @@ function ctrlGnbWindow() {
 
 gnbExit.addEventListener('click', ctrlGnbWindow);
 gnbBtn.addEventListener('click', ctrlGnbWindow);
+d0Titles.forEach((d0Title) => {d0Title.addEventListener('click', () => accrdCtrl(d0Title, '.menu_d1'))});
 //해당 태그를 클릭할 시 GNB를 열고 닫기
 
