@@ -147,56 +147,51 @@
 .menu_d0_title {
     position: relative;
     padding: 15px;
-    border-bottom: 1px solid #aaa;
-    /* background-color: #ddd; */
+    border-bottom: 1px solid #ddd;
 }
+/* menu depth 0 */
 .menu_d1 {
     height: 0;
+    margin: 0 10px;
+    transition: all 0.2s ease-in-out;
     overflow: hidden;
 }
-.menu_d1_item:first-child {
-    margin-top: 10px;
-}
-.menu_d1_item:last-child {
-    margin-bottom: 10px;
+.menu_d1_item:last-child .menu_d1_title {
+    border-bottom: 0;
 }
 .menu_d1_title {
     position: relative;
-    padding: 15px 10px 15px 22px;
+    padding: 15px 10px 15px 12px;
     font-size: 15px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px dotted #ccc;
 }
+/* menu depth 1 */
 .menu_d2 {
-    height: 0;
+    height: 0px;
+    margin: 0 10px;
     overflow: hidden;
 }
-.menu_d2_item:first-child {
-    margin-top: 10px;
-}
-.menu_d2_item:last-child {
-    margin-bottom: 10px;
+.menu_d2_item:last-child .menu_d2_title {
+    border-bottom: 0;
 }
 .menu_d2_title {
     position: relative;
-    padding: 15px 10px 15px 29px;
+    padding: 15px 10px 15px 19px;
     font-size: 14px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px dotted #eee;
 }
+/* menu depth 2 */
 .menu_d3 {
-    height: 0;
+    height: 0px;
+    margin: 0 10px;
     overflow: hidden;
 }
 .menu_d3_item {
-    padding: 15px 10px 15px 38px;
+    padding: 15px 10px 15px 28px;
     font-size: 13px;
     background-color: #f1f1f1;
 }
-.menu_d3_item:first-child {
-    margin-top: 10px;
-}
-.menu_d3_item:last-child {
-    margin-bottom: 10px;
-}
+/* menu depth 3 */
 .plus span {
     display: block;
     position: absolute;
@@ -210,15 +205,23 @@
     background-color: #111;
 }
 .plus span:nth-child(1) {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
     transition: transform 0.2s;
 }
 .plus span:nth-child(2) {
     transform: rotate(90deg);
 }
 .active {
-    height: 100%;
-    transition: height 0.2s;
+    height: 500px; /* 가장 항목 수가 많은 메뉴의 높이에 맞추는게 나을듯 */
+    transition: all 0.2s ease-in-out;
+}
+.open {
+    border-left: 3px solid #f6805f;
+    background-color: #ddd;
+}
+.open_symbol {
+    transform: rotate(90deg);
+    transition: all 0.2s;
 }
 
 /* 모바일 - main */
