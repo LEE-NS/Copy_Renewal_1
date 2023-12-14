@@ -40,37 +40,52 @@ function ctrlGnbWindow() {
 //GNB 창 열기(이거보다 훨씬 깔끔하게 할 수 있을듯. 바꾸기)
 
 function accrdCtrl(pointingNode, pointingNodes, targetNode) {
-    let symbols = document.querySelectorAll('.plus span')
+    let symbols = document.querySelectorAll('.act');
+    let symbol = pointingNode.querySelector('.act');
     let targets = document.querySelectorAll(targetNode);
     let targetsArr = [...targets];
-    targets.forEach((target) => {
-        target.classList.remove('active')
+
+    if(pointingNode.nextElementSibling.classList.contains('active')) {
+        targets.forEach((elem) => {
+            elem.classList.remove('active')
+        });
+        pointingNodes.forEach((elem) => {
+            elem.classList.remove('open')
+        });
+        symbols.forEach((elem) => {
+            elem.classList.remove('open_symbol')
+        });
+        return
+    };
+    //이미 열려있는 상태에서 클릭을 한다면 닫는다
+
+    targets.forEach((elem) => {
+        elem.classList.remove('active')
     });
-    pointingNodes.forEach((pointingNode) => {
-        pointingNode.classList.remove('open');
+    pointingNodes.forEach((elem) => {
+        elem.classList.remove('open')
     });
-    symbols.forEach((symbol) => {
-        /* let symbol = */
-        symbol.classList.remove('open_symbol')
+    symbols.forEach((elem) => {
+        elem.classList.remove('open_symbol')
     });
-    /* 부여된 모든 클래스 삭제(초기화) */
+    //위 조건에 해당되지 않으면 모든 클래스 삭제
+    
     if(pointingNode.nextElementSibling && targetsArr.includes(pointingNode.nextElementSibling)) {
         pointingNode.nextElementSibling.classList.add('active');
         pointingNode.classList.add('open');
         symbol.classList.add('open_symbol');
-        console.log('열림');
-    } else {
-        console.log('닫힘');
+    } else  {
+        return
     };
+    //클릭된 항목에게 알맞는 클래스 부여
 };
+// 아코디언 메뉴 : 항목 클릭 시 다른 항목 닫힘 + 열려있는 항목 클릭시 닫힘
 
 
 
 
 gnbExit.addEventListener('click', ctrlGnbWindow);
 gnbBtn.addEventListener('click', ctrlGnbWindow);
-//해당 태그를 클릭할 시 GNB를 열고 닫기
 d0Titles.forEach((d0Title) => {
     d0Title.addEventListener('click', () => accrdCtrl(d0Title, d0Titles, '.menu_d1'));
 });
-//아코디언 메뉴 로직
