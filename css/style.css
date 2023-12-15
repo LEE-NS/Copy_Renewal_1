@@ -83,7 +83,7 @@
     border-radius: 100px;
     letter-spacing: -1px;
 
-    transition: 0.2s;
+    transition: all 0.2s;
 }
 .fixed_menu_bottom li:hover .item_name {
     color: #cd4831;
@@ -97,6 +97,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    letter-spacing: -1px;
     z-index: 100;
 }
 .gnb_exit {
@@ -148,6 +149,8 @@
     position: relative;
     padding: 15px;
     border-bottom: 1px solid #ddd;
+    font-weight: 600;
+    transition: all 0.1s;
 }
 /* menu depth 0 */
 .menu_d1 {
@@ -164,6 +167,7 @@
     padding: 15px 10px 15px 12px;
     font-size: 15px;
     border-bottom: 1px dotted #ccc;
+    transition: all 0.1s;
 }
 /* menu depth 1 */
 .menu_d2 {
@@ -203,12 +207,11 @@
     height: 12px;
     margin-top: -6px;
     border-radius: 100px;
-
     background-color: #666;
 }
 .plus .act {
     transform: rotate(0deg);
-    transition: all 0.3s;
+    transition: transform 0.1s;
 }
 .plus span:nth-child(2) {
     transform: rotate(90deg);
@@ -219,11 +222,13 @@
 }
 .open {
     border-left: 5px solid #f6805f;
+    color: #b6614a;
     background-color: #ddd;
+    transition: all 0.1s;
 }
 .open_symbol {
     transform: rotate(90deg) !important;
-    transition: all 0.3s !important;
+    transition: transform 0.1s !important;
 }
 
 /* 모바일 - main */
