@@ -216,7 +216,7 @@
     transform: rotate(90deg);
 }
 .active {
-    height: 500px; /* 가장 항목 수가 많은 메뉴의 높이에 맞추는게 나을듯 */
+    height: 450px; /* 가장 항목 수가 많은 메뉴의 높이에 맞추는게 나을듯 */
     transition: all 0.3s ease-in-out;
 }
 .open {
