@@ -150,11 +150,11 @@
     border-bottom: 1px solid #ddd;
     font-weight: 600;
     transition: all 0.1s;
+    background-color: #fff;
 }
 /* menu depth 0 */
 .menu_d1 {
     height: 0;
-    margin: 0 10px;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
 }
@@ -163,7 +163,7 @@
 }
 .menu_d1_title {
     position: relative;
-    padding: 15px 10px 15px 12px;
+    padding: 15px 15px 15px 12px;
     font-size: 15px;
     border-bottom: 1px dotted #ccc;
     transition: all 0.1s;
@@ -180,7 +180,7 @@
 }
 .menu_d2_title {
     position: relative;
-    padding: 15px 10px 15px 19px;
+    padding: 15px 15px 15px 19px;
     font-size: 14px;
     border-bottom: 1px dotted #eee;
 }
@@ -192,7 +192,7 @@
     overflow: hidden;
 }
 .menu_d3_item {
-    padding: 15px 10px 15px 28px;
+    padding: 15px 15px 15px 28px;
     font-size: 13px;
     background-color: #f1f1f1;
 }
@@ -216,7 +216,7 @@
     transform: rotate(90deg);
 }
 .active {
-    height: 450px; /* 가장 항목 수가 많은 메뉴의 높이에 맞추는게 나을듯 */
+    height: 100%; /* 가장 항목 수가 많은 메뉴의 높이에 맞추는게 나을듯 */
     transition: all 0.3s ease-in-out;
 }
 .open {

@@ -26,6 +26,8 @@ let gnbList = document.querySelector('.gnb');
 let gnbExit = document.querySelector('.gnb_exit');
 let gnbBtn = document.querySelector('.gnb_btn');
 let d0Titles = document.querySelectorAll('.menu_d0_title');
+let d1Titles = document.querySelectorAll('.menu_d1_title');
+
 
 function ctrlGnbWindow() {
     let dp = gnbWindow.style.display;
@@ -42,6 +44,19 @@ function ctrlGnbWindow() {
 }; 
 //GNB 창 열기(이거보다 훨씬 깔끔하게 할 수 있을듯. 바꾸기)
 
+function gnbClassRemove(titles, windows, titleSymbols) {
+    titles.forEach((elem) => {
+        elem.classList.remove('active')
+    });
+    windows.forEach((elem) => {
+        elem.classList.remove('open')
+    });
+    titleSymbols.forEach((elem) => {
+        elem.classList.remove('open_symbol')
+    });
+};
+// GNB에서 상호작용시 부여된 클래스 초기화
+
 function accrdCtrl(pointingNode, pointingNodes, targetNode) {
     let symbols = document.querySelectorAll('.act');
     let symbol = pointingNode.querySelector('.act');
@@ -49,28 +64,12 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode) {
     let targetsArr = [...targets];
 
     if(pointingNode.nextElementSibling.classList.contains('active')) {
-        targets.forEach((elem) => {
-            elem.classList.remove('active')
-        });
-        pointingNodes.forEach((elem) => {
-            elem.classList.remove('open')
-        });
-        symbols.forEach((elem) => {
-            elem.classList.remove('open_symbol')
-        });
+        gnbClassRemove(targets, pointingNodes, symbols);
         return
     };
     //이미 열려있는 상태에서 클릭을 한다면 닫는다
 
-    targets.forEach((elem) => {
-        elem.classList.remove('active')
-    });
-    pointingNodes.forEach((elem) => {
-        elem.classList.remove('open')
-    });
-    symbols.forEach((elem) => {
-        elem.classList.remove('open_symbol')
-    });
+    gnbClassRemove(targets, pointingNodes, symbols);
     //위 조건에 해당되지 않으면 모든 클래스 삭제
     
     if(pointingNode.nextElementSibling && targetsArr.includes(pointingNode.nextElementSibling)) {
@@ -83,12 +82,18 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode) {
     //클릭된 항목에게 알맞는 클래스 부여
 };
 // 아코디언 메뉴 : 항목 클릭 시 다른 항목 닫힘 + 열려있는 항목 클릭시 닫힘
-
+// d0 메뉴 이외에는 클릭되는 타이틀 부분의 효과를 다르게 주어야 한다 (함수의 타이틀 효과 주는 부분만 고쳐 새로 만들기)
 
 
 
 gnbExit.addEventListener('click', ctrlGnbWindow);
+
 gnbBtn.addEventListener('click', ctrlGnbWindow);
+
 d0Titles.forEach((d0Title) => {
     d0Title.addEventListener('click', () => accrdCtrl(d0Title, d0Titles, '.menu_d1'));
+});
+
+d1Titles.forEach((d1Title) => {
+    d1Title.addEventListener('click', () => accrdCtrl(d1Title, d1Titles, '.menu_d2'));
 });
