@@ -219,9 +219,13 @@
     height: 100%; /* 가장 항목 수가 많은 메뉴의 높이에 맞추는게 나을듯 */
     transition: all 0.3s ease-in-out;
 }
-.open {
+.open_d0 {
     border-left: 5px solid #f6805f;
     color: #b6614a;
+    background-color: #ddd;
+    transition: all 0.1s;
+}
+.open {
     background-color: #ddd;
     transition: all 0.1s;
 }
