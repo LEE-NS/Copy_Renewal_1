@@ -21,4 +21,4 @@ Project hosting : LEE-NS
 <div>CSS</div>
 <div>Javascript</div>
 <br><br><br><br><br><br>
-*** additions and corrections can be hold frequently. ***
+*** additions and corrections can be hold frequently ***
