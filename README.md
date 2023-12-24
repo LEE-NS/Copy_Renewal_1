@@ -19,6 +19,6 @@ Project hosting : LEE-NS
 <h2>Environment</h2>
 <div>HTML</div>
 <div>CSS</div>
-<div>Javascript</div>
+<div>Javascript(Vanilla)</div>
 <br><br><br><br><br><br>
 *** additions and corrections can be hold frequently ***
