@@ -108,7 +108,7 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode) {
     };
     //클릭된 항목에게 알맞는 클래스 부여
 };
-// d0 메뉴 이외에는 클릭되는 타이틀 부분의 효과를 다르게 주어야 한다 (함수의 타이틀 효과 주는 부분만 고쳐 새로 만들기)
+// 아코디언 메뉴 
 
 
 
