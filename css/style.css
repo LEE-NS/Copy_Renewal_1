@@ -155,7 +155,8 @@
 /* menu depth 0 */
 .menu_d1 {
     height: 0;
-    transition: all 0.3s ease-in-out;
+    visibility: hidden;
+    transition: visibility 1s ease-in-out;
     overflow: hidden;
 }
 .menu_d1_item:last-child .menu_d1_title {
@@ -172,7 +173,8 @@
 .menu_d2 {
     height: 0px;
     margin: 0 10px;
-    transition: all 0.3s ease-in-out;
+    visibility: hidden;
+    transition: visibility 1s ease-in-out;
     overflow: hidden;
 }
 .menu_d2_item:last-child .menu_d2_title {
@@ -188,7 +190,8 @@
 .menu_d3 {
     height: 0px;
     margin: 0 10px;
-    transition: all 0.3s ease-in-out;
+    visibility: hidden;
+    transition: visibility 1s ease-in-out;
     overflow: hidden;
 }
 .menu_d3_item {
@@ -216,13 +219,14 @@
     transform: rotate(90deg);
 }
 .active {
-    height: 100%; /* 가장 항목 수가 많은 메뉴의 높이에 맞추는게 나을듯 */
-    transition: all 0.3s ease-in-out;
+    height: 100%;
+    visibility: visible;
+    transition: visibility 1s ease-in-out;
+    background-color: #eee;
 }
 .open_d0 {
     border-left: 5px solid #f6805f;
     color: #b6614a;
-    background-color: #ddd;
     transition: all 0.1s;
 }
 .open {

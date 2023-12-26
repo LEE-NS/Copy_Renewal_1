@@ -45,6 +45,19 @@ function ctrlGnbWindow() {
 }; 
 //GNB 창 열기(이거보다 훨씬 깔끔하게 할 수 있을듯. 바꾸기)
 
+function gnbClassRemoveD0(titles, windows, titleSymbols) {
+    titles.forEach((elem) => {
+        elem.classList.remove('active')
+    });
+    windows.forEach((elem) => {
+        elem.classList.remove('open_d0')
+    });
+    titleSymbols.forEach((elem) => {
+        elem.classList.remove('open_symbol')
+    });
+};
+// GNB에서 상호작용시 부여된 클래스 초기화(d0용)
+
 function gnbClassRemove(titles, windows, titleSymbols) {
     titles.forEach((elem) => {
         elem.classList.remove('active')
@@ -59,18 +72,18 @@ function gnbClassRemove(titles, windows, titleSymbols) {
 // GNB에서 상호작용시 부여된 클래스 초기화
 
 function accrdCtrlD0(pointingNode, pointingNodes, targetNode) {
-    let symbols = document.querySelectorAll('.act');
+    let symbols = document.querySelectorAll('menu_d0_title .act');
     let symbol = pointingNode.querySelector('.act');
     let targets = document.querySelectorAll(targetNode);
     let targetsArr = [...targets];
 
     if(pointingNode.nextElementSibling.classList.contains('active')) {
-        gnbClassRemove(targets, pointingNodes, symbols);
+        gnbClassRemoveD0(targets, pointingNodes, symbols);
         return
     };
     //이미 열려있는 상태에서 클릭을 한다면 닫는다
 
-    gnbClassRemove(targets, pointingNodes, symbols);
+    gnbClassRemoveD0(targets, pointingNodes, symbols);
     //위 조건에 해당되지 않으면 모든 클래스 삭제
     
     if(pointingNode.nextElementSibling && targetsArr.includes(pointingNode.nextElementSibling)) {
@@ -84,8 +97,8 @@ function accrdCtrlD0(pointingNode, pointingNodes, targetNode) {
 };
 // 최상위 항목 아코디언 메뉴 : 항목 클릭 시 다른 항목 닫힘 + 열려있는 항목 클릭시 닫힘 + 최상위 타이틀 전용 효과
 
-function accrdCtrl(pointingNode, pointingNodes, targetNode) {
-    let symbols = document.querySelectorAll('.act');
+function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
+    let symbols = document.querySelectorAll(actClassHere);
     let symbol = pointingNode.querySelector('.act');
     let targets = document.querySelectorAll(targetNode);
     let targetsArr = [...targets];
@@ -121,9 +134,9 @@ d0Titles.forEach((d0Title) => {
 });
 
 d1Titles.forEach((d1Title) => {
-    d1Title.addEventListener('click', () => accrdCtrl(d1Title, d1Titles, '.menu_d2'));
+    d1Title.addEventListener('click', () => accrdCtrl(d1Title, d1Titles, '.menu_d2', 'menu_d1_title .act'));
 });
 
 d2Titles.forEach((d2Title) => {
-    d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3'));
+    d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3', 'menu_d2_title .act'));
 });
