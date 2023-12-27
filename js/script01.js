@@ -14,11 +14,19 @@ header
     활성화된 아코디언 메뉴의 스타일이 저장된 HTML 클래스(.active)를 작성해둔다.
     어떤 항목을 클릭하면 .active가 그 항목에 적용된다
     어떤 항목이 클릭되어 활성화된 상태에서 다른 항목을 클릭하면 .active가 동일한 모든 항목에서 제거되고 마지막에 클릭한 항목에 .active가 적용된다.
+    '+' 기호는 해당 타이틀의 하위 항목이 열려있을 때만 open_symbol 클래스가 적용되도록 해야 한다.
 
     jquery에서는 어떤 로직을 사용했을까?
 
     * 항목의 크기 이상의 글자 수를 가지는 항목은 
         호버되었을 때, ellipsis되어있던 부분이 원래 항목의 컨텐츠 만큼 다시 보이게 되는데, 좌우로 움직이면서 항목을 보여주게끔 한다.
+
+- 메인 슬라이드 :
+    이미지 슬라이드와 인디케이터로 표현됨
+    이미지 양 끝에 좌우로 넘어갈 수 있는 이동 버튼이 있고 모든 항목은 순환
+    이미지와 인디케이터의 인덱스가 일치하도록 한다. 특정 인덱스의 인디케이터 클릭시 해당 인덱스의 슬라이드로 이동
+    일정 시간마다 다음 슬라이드로 넘어가도록 한다.
+            
  */
 
 let gnbWindow = document.querySelector('.gnb_wrap');
@@ -72,7 +80,7 @@ function gnbClassRemove(titles, windows, titleSymbols) {
 // GNB에서 상호작용시 부여된 클래스 초기화
 
 function accrdCtrlD0(pointingNode, pointingNodes, targetNode) {
-    let symbols = document.querySelectorAll('menu_d0_title .act');
+    let symbols = document.querySelectorAll('.menu_d0_title .act');
     let symbol = pointingNode.querySelector('.act');
     let targets = document.querySelectorAll(targetNode);
     let targetsArr = [...targets];
@@ -134,9 +142,11 @@ d0Titles.forEach((d0Title) => {
 });
 
 d1Titles.forEach((d1Title) => {
-    d1Title.addEventListener('click', () => accrdCtrl(d1Title, d1Titles, '.menu_d2', 'menu_d1_title .act'));
+    d1Title.addEventListener('click', () => accrdCtrl(d1Title, d1Titles, '.menu_d2', '.menu_d1_title .act'));
 });
 
 d2Titles.forEach((d2Title) => {
-    d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3', 'menu_d2_title .act'));
+    d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3', '.menu_d2_title .act'));
 });
+
+// class 나 id 지정할 때 #이랑 .이 붙었는지 잘 확인하자

@@ -156,7 +156,7 @@
 .menu_d1 {
     height: 0;
     visibility: hidden;
-    transition: visibility 1s ease-in-out;
+    transition: visibility 2s ease-in-out;
     overflow: hidden;
 }
 .menu_d1_item:last-child .menu_d1_title {
@@ -168,13 +168,13 @@
     font-size: 15px;
     border-bottom: 1px dotted #ccc;
     transition: all 0.1s;
+    background-color: #f5f5f5;
 }
 /* menu depth 1 */
 .menu_d2 {
     height: 0px;
-    margin: 0 10px;
     visibility: hidden;
-    transition: visibility 1s ease-in-out;
+    transition: visibility 2s ease-in-out;
     overflow: hidden;
 }
 .menu_d2_item:last-child .menu_d2_title {
@@ -182,22 +182,22 @@
 }
 .menu_d2_title {
     position: relative;
-    padding: 15px 15px 15px 19px;
+    padding: 15px 25px 15px 29px;
     font-size: 14px;
     border-bottom: 1px dotted #eee;
+    background-color: #eee;
 }
 /* menu depth 2 */
 .menu_d3 {
     height: 0px;
-    margin: 0 10px;
     visibility: hidden;
-    transition: visibility 1s ease-in-out;
+    transition: visibility 2s ease-in-out;
     overflow: hidden;
 }
 .menu_d3_item {
-    padding: 15px 15px 15px 28px;
+    padding: 15px 25px 15px 38px;
     font-size: 13px;
-    background-color: #f1f1f1;
+    background-color: #ddd;
 }
 /* menu depth 3 */
 .plus span {
@@ -221,16 +221,15 @@
 .active {
     height: 100%;
     visibility: visible;
-    transition: visibility 1s ease-in-out;
-    background-color: #eee;
+    transition: visibility 2s ease-in-out;
 }
 .open_d0 {
     border-left: 5px solid #f6805f;
     color: #b6614a;
+    background-color: #f5f5f5;
     transition: all 0.1s;
 }
 .open {
-    background-color: #ddd;
     transition: all 0.1s;
 }
 .open_symbol {
