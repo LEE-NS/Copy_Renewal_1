@@ -140,7 +140,7 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
 let slides = document.querySelectorAll('.main_slide');
 let indicators = document.querySelectorAll('.slide_indic ul li')
 
-function matchingSlide() {
+function matchingSlide(i) {
     
     //i번째의 인디케이터를 클릭하면 i번째의 슬라이드가 나타나야 한다.
     //i번쨰의 슬라이드가 나타나는 것을 어떻게 표현할 것인가
@@ -150,7 +150,7 @@ function matchingSlide() {
 };
 
 indicators.forEach((indicator, i) => {
-    indicator[i].addEventListener('click', matchingSlide);
+    indicator.addEventListener('click', () => matchingSlide(i));
 });
 
 console.log(slides);
