@@ -135,26 +135,12 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
 인디케이터 버튼 클릭 시 해당 인덱스의 슬라이드로 이동
 일정 시간마다 넘어가는 슬라이드
 슬라이드 좌,우 버튼 누를 시 이전,다음 슬라이드로 이동
+
+nextSlide() : 다음 슬라이드로 이동하는 함수
+prevSlide() : 이전 슬라이드로 이동하는 함수
+intervalSlide() : 일정 시간마다 다음 슬라이드로 이동하는 함수
 */
-
-let slides = document.querySelectorAll('.main_slide');
-let indicators = document.querySelectorAll('.slide_indic ul li')
-
-function matchingSlide(i) {
-    
-    //i번째의 인디케이터를 클릭하면 i번째의 슬라이드가 나타나야 한다.
-    //i번쨰의 슬라이드가 나타나는 것을 어떻게 표현할 것인가
-    //flex로 가로로 나열된 슬라이드의 위치를 찾기?
-    // 
-    //클릭한 인덱스의 슬라이드를 가장 앞으로 가져오기?  
-};
-
-indicators.forEach((indicator, i) => {
-    indicator.addEventListener('click', () => matchingSlide(i));
-});
-
-console.log(slides);
-console.log(indicators);
+let mainSlideAll = document.querySelector('.main_slide_all');
 
 
 gnbExit.addEventListener('click', ctrlGnbWindow);
