@@ -132,13 +132,19 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
 // 아코디언 메뉴 
 
 /* 
-인디케이터 버튼 클릭 시 해당 인덱스의 슬라이드로 이동
-일정 시간마다 넘어가는 슬라이드
-슬라이드 좌,우 버튼 누를 시 이전,다음 슬라이드로 이동
+메인 슬라이드 만들기
 
-nextSlide() : 다음 슬라이드로 이동하는 함수
-prevSlide() : 이전 슬라이드로 이동하는 함수
-intervalSlide() : 일정 시간마다 다음 슬라이드로 이동하는 함수
+슬라이드 전체 - mainSlideAll
+증감카운터 - slideCount = 0
+
+<함수>
+nextSlide()
+prevSlide()
+repearSlide() - 일정 시간마다 nextSlide()가 순환 반복되는 함수
+makeIndic() - 슬라이드 개수에 따라 인디케이터의 개수를 증가시키는 함수
+
+render() - 최초로 페이지가 로드될 때 슬라이드가 0번째 부터 로드되게 한다
+
 */
 let mainSlideAll = document.querySelector('.main_slide_all');
 
