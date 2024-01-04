@@ -147,6 +147,10 @@ render() - 최초로 페이지가 로드될 때 슬라이드가 0번째 부터 �
 
 */
 let mainSlideAll = document.querySelector('.main_slide_all');
+let nextBtn = document.querySelector('.next_btn button');
+let prevBtn = document.querySelector('.prev_btn button');
+let slideCount = 0;
+
 
 
 gnbExit.addEventListener('click', ctrlGnbWindow);

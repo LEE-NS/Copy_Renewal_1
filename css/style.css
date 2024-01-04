@@ -19,7 +19,7 @@
     justify-content: space-between;
     z-index: 99;
 
-    background-color: #888888;
+    background-color: #fff;
 }
 .gnb_btn, .title_area, .login_btn {
     height: 100%;
@@ -262,6 +262,46 @@
     height: auto;
     object-fit: cover;
 }
+.next_btn, .prev_btn {
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+}
+.next_btn {
+    right: 30px;
+}
+.prev_btn {
+    left: 30px;
+}
+.next_btn button, .prev_btn button {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    text-indent: -99999px;
+
+    background-color: #ffffff83;
+}
+.next_btn button::after, .prev_btn button::after {
+    display: block;
+    content: "";
+    width: 18px;
+    height: 18px;
+    
+}
+.next_btn button::after {
+    margin: 0 0 15px 15px;
+    border-top: 3px solid #333333a6;
+    border-right: 3px solid #333333a6;
+    transform: rotate(45deg);
+}
+.prev_btn button::after {
+    margin: 0 0 15px 22px;
+    border-bottom: 3px solid #333333a6;
+    border-left: 3px solid #333333a6;
+    transform: rotate(45deg);
+}
+
+
 .slide_indic {
     position: absolute;
     bottom: 3%;
@@ -352,9 +392,6 @@
     color: #fff;
     background-color: #cd4831;
 }
-
-
-
 
 
 /* hide */
