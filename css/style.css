@@ -300,8 +300,6 @@
     border-left: 3px solid #333333a6;
     transform: rotate(45deg);
 }
-
-
 .slide_indic {
     position: absolute;
     bottom: 3%;
@@ -323,7 +321,7 @@
 }
 .slide_indic .indic_on {
     width: 24px;
-    background-color: #ff0000;
+    background-color: #cd4831;
 }
 .trust {
     margin: 50px 15px;

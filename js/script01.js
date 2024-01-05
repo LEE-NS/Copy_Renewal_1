@@ -147,9 +147,19 @@ render() - 최초로 페이지가 로드될 때 슬라이드가 0번째 부터 �
 
 */
 let mainSlideAll = document.querySelector('.main_slide_all');
+let mainSlide = document.querySelectorAll('.main_slide');
+let slideIndic = document.querySelector('.slide_indic ul');
 let nextBtn = document.querySelector('.next_btn button');
 let prevBtn = document.querySelector('.prev_btn button');
 let slideCount = 0;
+
+for (let i = 0; i < mainSlide.length; i++) {
+    if (i == 0) {
+        slideIndic.innerHTML += `<li class="indic_on"></li>`;
+    } else {
+        slideIndic.innerHTML += `<li></li>`;
+    }
+}; //슬라이드 개수 만큼 인디케이터 개수 증가
 
 
 
