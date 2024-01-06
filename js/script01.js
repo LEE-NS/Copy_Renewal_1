@@ -153,6 +153,46 @@ let nextBtn = document.querySelector('.next_btn button');
 let prevBtn = document.querySelector('.prev_btn button');
 let slideCount = 0;
 
+function nextSlide() {
+    //다음 슬라이드로 넘어가는 함수 : 
+    // 버튼을 누르거나, 스와이프를 했을 때,
+    // 다음 index의 슬라이드를 화면에 위치시킨다.
+    // 마지막 index에서 오른쪽 버튼을 누르거나, 오른쪽으로 스와이프를 시도하면 
+    // 0번째 index로 돌아간다.
+    let slideAll = mainSlideAll.clientWidth;
+    let slideLength = mainSlide.length;
+    let eachScroll = slideAll/slideLength;
+
+    for (let i = 0; i < slideLength; i++) {
+        if(i == (slideLength - 1)) {
+            mainSlideAll.style.marginLeft = '0';
+        } else {
+            mainSlideAll.style.marginLeft -= `${eachScroll}px`;
+            //margin-left를 정해진 값 만큼 빼야 한다
+            //parseInt(), parseFloat()를 이용. 이용하면 단위가 빠진 숫자값으로 변하기 떄문에 연산 전후 단위에 주의할 것
+        };
+    };
+};
+
+function prevSlide() {
+    let slideAll = mainSlideAll.clientWidth;
+    let slideLength = mainSlide.length;
+    let eachScroll = slideAll/slideLength;
+
+    for (let i = 0; i < slideLength; i++) {
+        if(i == 0) {
+            mainSlideAll.style.marginLeft = `-${eachScroll*(slideLength - 1)}px`;
+        } else {
+            mainSlideAll.style.marginLeft += `${eachScroll}px`;
+            //margin-left를 정해진 값 만큼 더해야 한다
+        };
+    };
+};
+
+function render() {
+    
+};
+
 for (let i = 0; i < mainSlide.length; i++) {
     if (i == 0) {
         slideIndic.innerHTML += `<li class="indic_on"></li>`;
@@ -161,10 +201,7 @@ for (let i = 0; i < mainSlide.length; i++) {
     }
 }; //슬라이드 개수 만큼 인디케이터 개수 증가
 
-
-
 gnbExit.addEventListener('click', ctrlGnbWindow);
-
 gnbBtn.addEventListener('click', ctrlGnbWindow);
 
 d0Titles.forEach((d0Title) => {
@@ -179,4 +216,6 @@ d2Titles.forEach((d2Title) => {
     d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3', '.menu_d2_title .act'));
 });
 
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
 // class 나 id 지정할 때 #이랑 .이 붙었는지 잘 확인하자
