@@ -165,11 +165,12 @@ function nextSlide() {
 
     for (let i = 0; i < slideLength; i++) {
         if(i == (slideLength - 1)) {
-            mainSlideAll.style.marginLeft = '0';
+            mainSlideAll.style.marginLeft = '0px';
         } else {
-            mainSlideAll.style.marginLeft -= `${eachScroll}px`;
+            mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) - eachScroll}px`;
             //margin-left를 정해진 값 만큼 빼야 한다
             //parseInt(), parseFloat()를 이용. 이용하면 단위가 빠진 숫자값으로 변하기 떄문에 연산 전후 단위에 주의할 것
+            //지금 nextSlide()와 prevSlide()가 전혀 동작하지 않음. 원인은 아직 찾지 못함
         };
     };
 };
@@ -183,7 +184,7 @@ function prevSlide() {
         if(i == 0) {
             mainSlideAll.style.marginLeft = `-${eachScroll*(slideLength - 1)}px`;
         } else {
-            mainSlideAll.style.marginLeft += `${eachScroll}px`;
+            mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) + eachScroll}px`;
             //margin-left를 정해진 값 만큼 더해야 한다
         };
     };
