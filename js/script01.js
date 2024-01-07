@@ -163,9 +163,13 @@ function nextSlide() {
     let slideLength = mainSlide.length;
     let eachScroll = slideAll/slideLength;
 
+    console.log(eachScroll);
+
     for (let i = 0; i < slideLength; i++) {
         if(i == (slideLength - 1)) {
             mainSlideAll.style.marginLeft = '0px';
+            //조건문의 내용 : 슬라이드의 마지막에 다다랐을 때의 동작
+            // -> i가 mainSlide NodeList의 index를 가리키도록 한다
         } else {
             mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) - eachScroll}px`;
             //margin-left를 정해진 값 만큼 빼야 한다
