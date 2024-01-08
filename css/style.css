@@ -253,7 +253,6 @@
 .main_slide_all {
     display: flex;
     width: 500%;
-    margin-left: 0;
 }
 .main_slide {
     width: 100%;

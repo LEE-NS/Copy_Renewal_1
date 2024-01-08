@@ -151,7 +151,13 @@ let mainSlide = document.querySelectorAll('.main_slide');
 let slideIndic = document.querySelector('.slide_indic ul');
 let nextBtn = document.querySelector('.next_btn button');
 let prevBtn = document.querySelector('.prev_btn button');
+
 let slideCount = 0;
+
+//slideCount의 값이 mainSlide.length와 일치해야 한다.
+//페이지 로딩과 동시에 slideCount는 0, 슬라이드는 첫 번째 슬라이드, 인디케이더도 첫 번째에 위치해야 한다.
+
+mainSlideAll.style.marginLeft = '0px';
 
 function nextSlide() {
     //다음 슬라이드로 넘어가는 함수 : 
@@ -163,20 +169,14 @@ function nextSlide() {
     let slideLength = mainSlide.length;
     let eachScroll = slideAll/slideLength;
 
-    console.log(eachScroll);
+    mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) - eachScroll}px`;
 
-    for (let i = 0; i < slideLength; i++) {
-        if(i == (slideLength - 1)) {
-            mainSlideAll.style.marginLeft = '0px';
-            //조건문의 내용 : 슬라이드의 마지막에 다다랐을 때의 동작
-            // -> i가 mainSlide NodeList의 index를 가리키도록 한다
-        } else {
-            mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) - eachScroll}px`;
-            //margin-left를 정해진 값 만큼 빼야 한다
-            //parseInt(), parseFloat()를 이용. 이용하면 단위가 빠진 숫자값으로 변하기 떄문에 연산 전후 단위에 주의할 것
-            //지금 nextSlide()와 prevSlide()가 전혀 동작하지 않음. 원인은 아직 찾지 못함
-        };
-    };
+    slideCount++;
+
+    if(slideCount == slideLength) {
+        mainSlideAll.style.marginLeft = '0px';
+        slideCount = 0;
+    } 
 };
 
 function prevSlide() {
@@ -184,14 +184,17 @@ function prevSlide() {
     let slideLength = mainSlide.length;
     let eachScroll = slideAll/slideLength;
 
-    for (let i = 0; i < slideLength; i++) {
-        if(i == 0) {
-            mainSlideAll.style.marginLeft = `-${eachScroll*(slideLength - 1)}px`;
-        } else {
-            mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) + eachScroll}px`;
-            //margin-left를 정해진 값 만큼 더해야 한다
-        };
+    mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) + eachScroll}px`;
+
+    slideCount--;
+    console.log(eachScroll, slideLength);
+    console.log(eachScroll*slideLength);
+
+    if(slideCount <= 0) {
+        mainSlideAll.style.marginLeft = `-${(eachScroll*slideLength)}px`;
+        slideCount = slideLength;
     };
+    console.log(slideCount);
 };
 
 function render() {
