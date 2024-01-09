@@ -155,22 +155,25 @@ let prevBtn = document.querySelector('.prev_btn button');
 let slideAll = mainSlideAll.clientWidth;
 let slideLength = mainSlide.length;
 let eachScroll = slideAll/slideLength;
+let transX = parseInt(mainSlideAll.style.transform.replace(/[^\d.-]/g,''));
 
 let slideCount = 0;
 
 //slideCount의 값이 mainSlide.length와 일치해야 한다.
 //페이지 로딩과 동시에 slideCount는 0, 슬라이드는 첫 번째 슬라이드, 인디케이더도 첫 번째에 위치해야 한다.
 
-mainSlideAll.style.marginLeft = '0px';
-mainSlideAll.style.transition = 'margin-left 0.3s ease-in-out';
+mainSlideAll.style.transform = 'translate(0)';
+mainSlideAll.style.transition = 'transform 0.3s ease-in-out';
 
 function nextSlide() {
-    mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) - eachScroll}px`;
+    console.log(transX - eachScroll);
+    mainSlideAll.style.transform = `translate(${transX - eachScroll}px)`;
 
+    console.log(slideCount);
     slideCount++;
 
     if(slideCount == slideLength) {
-        mainSlideAll.style.marginLeft = '0px';
+        mainSlideAll.style.transform = 'translate(0)';
         slideCount = 0;
     };
 }; //다음 슬라이드로 이동
@@ -179,12 +182,16 @@ function prevSlide() {
     slideCount--;
 
     if(slideCount < 0) {
-        mainSlideAll.style.marginLeft = `${-(eachScroll*slideLength)}px`;
+        mainSlideAll.style.transform = `translate(${-eachScroll*(slideLength - 1)}px)`;
         slideCount = (slideLength - 1);
     };
 
-    mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) + eachScroll}px`;
+    mainSlideAll.style.transform = `translate(${transX + eachScroll}px)`;
 }; // 이전 슬라이드로 이동
+
+//정규식과 parseInt를 이용한 방법은 필요없는 연산이 많이 들어가서 어색해보인다. 다른 방법이 없을까
+
+
 
 //인디케이터를 움직이게 할 때, NodeList의 index에 slideCount를 활용하면 될 거 같음
 
