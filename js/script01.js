@@ -152,23 +152,19 @@ let slideIndic = document.querySelector('.slide_indic ul');
 let nextBtn = document.querySelector('.next_btn button');
 let prevBtn = document.querySelector('.prev_btn button');
 
+let slideAll = mainSlideAll.clientWidth;
+let slideLength = mainSlide.length;
+let eachScroll = slideAll/slideLength;
+
 let slideCount = 0;
 
 //slideCount의 값이 mainSlide.length와 일치해야 한다.
 //페이지 로딩과 동시에 slideCount는 0, 슬라이드는 첫 번째 슬라이드, 인디케이더도 첫 번째에 위치해야 한다.
 
 mainSlideAll.style.marginLeft = '0px';
+mainSlideAll.style.transition = 'margin-left 0.3s ease-in-out';
 
 function nextSlide() {
-    //다음 슬라이드로 넘어가는 함수 : 
-    // 버튼을 누르거나, 스와이프를 했을 때,
-    // 다음 index의 슬라이드를 화면에 위치시킨다.
-    // 마지막 index에서 오른쪽 버튼을 누르거나, 오른쪽으로 스와이프를 시도하면 
-    // 0번째 index로 돌아간다.
-    let slideAll = mainSlideAll.clientWidth;
-    let slideLength = mainSlide.length;
-    let eachScroll = slideAll/slideLength;
-
     mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) - eachScroll}px`;
 
     slideCount++;
@@ -176,30 +172,21 @@ function nextSlide() {
     if(slideCount == slideLength) {
         mainSlideAll.style.marginLeft = '0px';
         slideCount = 0;
-    } 
-};
+    };
+}; //다음 슬라이드로 이동
 
 function prevSlide() {
-    let slideAll = mainSlideAll.clientWidth;
-    let slideLength = mainSlide.length;
-    let eachScroll = slideAll/slideLength;
+    slideCount--;
+
+    if(slideCount < 0) {
+        mainSlideAll.style.marginLeft = `${-(eachScroll*slideLength)}px`;
+        slideCount = (slideLength - 1);
+    };
 
     mainSlideAll.style.marginLeft = `${parseInt(mainSlideAll.style.marginLeft) + eachScroll}px`;
+}; // 이전 슬라이드로 이동
 
-    slideCount--;
-    console.log(eachScroll, slideLength);
-    console.log(eachScroll*slideLength);
-
-    if(slideCount <= 0) {
-        mainSlideAll.style.marginLeft = `-${(eachScroll*slideLength)}px`;
-        slideCount = slideLength;
-    };
-    console.log(slideCount);
-};
-
-function render() {
-    
-};
+//인디케이터를 움직이게 할 때, NodeList의 index에 slideCount를 활용하면 될 거 같음
 
 for (let i = 0; i < mainSlide.length; i++) {
     if (i == 0) {
