@@ -140,66 +140,44 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
 <함수>
 nextSlide()
 prevSlide()
-repearSlide() - 일정 시간마다 nextSlide()가 순환 반복되는 함수
+repeatSlide() - 일정 시간마다 nextSlide()가 순환 반복되는 함수
 makeIndic() - 슬라이드 개수에 따라 인디케이터의 개수를 증가시키는 함수
 
 render() - 최초로 페이지가 로드될 때 슬라이드가 0번째 부터 로드되게 한다
 
 */
-let mainSlideAll = document.querySelector('.main_slide_all');
-let mainSlide = document.querySelectorAll('.main_slide');
-let slideIndic = document.querySelector('.slide_indic ul');
-let nextBtn = document.querySelector('.next_btn button');
-let prevBtn = document.querySelector('.prev_btn button');
+let mainSlideAll = document.querySelector('.main_slide_all'); //슬라이드 전체
+let mainSlide = document.querySelectorAll('.main_slide'); //각 슬라이드
+let slideWidth = mainSlide[0].clientWidth;
 
-let slideAll = mainSlideAll.clientWidth;
-let slideLength = mainSlide.length;
-let eachScroll = slideAll/slideLength;
-let transX = parseInt(mainSlideAll.style.transform.replace(/[^\d.-]/g,''));
+let pagination = document.querySelector('.slide_indic ul'); //슬라이드 페이지네이션
+let nextBtn = document.querySelector('.next_btn button'); //다음 버튼
+let prevBtn = document.querySelector('.prev_btn button'); //이전 버튼
 
-let slideCount = 0;
+let slideCount = 1;
 
-//slideCount의 값이 mainSlide.length와 일치해야 한다.
-//페이지 로딩과 동시에 slideCount는 0, 슬라이드는 첫 번째 슬라이드, 인디케이더도 첫 번째에 위치해야 한다.
+mainSlideAll.style.left = 0;
+mainSlideAll.style.transition = 'left 0.3s ease-in-out'; 
 
-mainSlideAll.style.transform = 'translate(0)';
-mainSlideAll.style.transition = 'transform 0.3s ease-in-out';
-
-function nextSlide() {
-    console.log(transX - eachScroll);
-    mainSlideAll.style.transform = `translate(${transX - eachScroll}px)`;
-
-    console.log(slideCount);
+function nextMove() {
+    //left값을 이용한다
+    if(slideCount % mainSlide.length == 0) {
+         
+    } else {
+        mainSlideAll.style.left = `${slideWidth*slideCount}px`
+    };
     slideCount++;
 
-    if(slideCount == slideLength) {
-        mainSlideAll.style.transform = 'translate(0)';
-        slideCount = 0;
-    };
-}; //다음 슬라이드로 이동
-
-function prevSlide() {
-    slideCount--;
-
-    if(slideCount < 0) {
-        mainSlideAll.style.transform = `translate(${-eachScroll*(slideLength - 1)}px)`;
-        slideCount = (slideLength - 1);
-    };
-
-    mainSlideAll.style.transform = `translate(${transX + eachScroll}px)`;
-}; // 이전 슬라이드로 이동
-
-//정규식과 parseInt를 이용한 방법은 필요없는 연산이 많이 들어가서 어색해보인다. 다른 방법이 없을까
+    
+}
 
 
-
-//인디케이터를 움직이게 할 때, NodeList의 index에 slideCount를 활용하면 될 거 같음
 
 for (let i = 0; i < mainSlide.length; i++) {
     if (i == 0) {
-        slideIndic.innerHTML += `<li class="indic_on"></li>`;
+        pagination.innerHTML += `<li class="indic_on"></li>`;
     } else {
-        slideIndic.innerHTML += `<li></li>`;
+        pagination.innerHTML += `<li></li>`;
     }
 }; //슬라이드 개수 만큼 인디케이터 개수 증가
 

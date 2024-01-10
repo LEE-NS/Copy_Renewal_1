@@ -243,15 +243,12 @@
 }
 
 /* 모바일 - main */
-#container {
-    position: relative;
-}
 .main_slide_wrap {
-    position: relative;
     overflow: hidden;
 }
 .main_slide_all {
     display: flex;
+    position: relative;
     width: 500%;
 }
 .main_slide {
