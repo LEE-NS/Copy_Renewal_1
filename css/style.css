@@ -244,6 +244,7 @@
 
 /* 모바일 - main */
 .main_slide_wrap {
+    position: relative;
     overflow: hidden;
 }
 .main_slide_all {

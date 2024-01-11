@@ -134,52 +134,43 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
 /* 
 메인 슬라이드 만들기
 
-슬라이드 전체 - mainSlideAll
-증감카운터 - slideCount = 0
-
 <함수>
-nextSlide()
-prevSlide()
+슬라이드의 수에 따라 node를 생성하는 for loop
+무한 슬라이드 구현을 위한 슬라이드 복사 및 복사된 슬라이드에서 원본 슬라이드로의 이동 로직
+nextSlide() - 다음 슬라이드로 이동
+prevSlide() - 이전 슬라이드로 이동
 repeatSlide() - 일정 시간마다 nextSlide()가 순환 반복되는 함수
-makeIndic() - 슬라이드 개수에 따라 인디케이터의 개수를 증가시키는 함수
-
-render() - 최초로 페이지가 로드될 때 슬라이드가 0번째 부터 로드되게 한다
-
 */
-let mainSlideAll = document.querySelector('.main_slide_all'); //슬라이드 전체
-let mainSlide = document.querySelectorAll('.main_slide'); //각 슬라이드
-let slideWidth = mainSlide[0].clientWidth;
+let slideFrame = document.querySelector('.main_slide_all');
+let slides = document.querySelectorAll('.main_slide');
+let slideCount = slides.length;
+let currSlide = 0;
 
-let pagination = document.querySelector('.slide_indic ul'); //슬라이드 페이지네이션
-let nextBtn = document.querySelector('.next_btn button'); //다음 버튼
-let prevBtn = document.querySelector('.prev_btn button'); //이전 버튼
+let pagination = document.querySelector('.slide_indic > ul');
 
-let slideCount = 1;
-
-mainSlideAll.style.left = 0;
-mainSlideAll.style.transition = 'left 0.3s ease-in-out'; 
-
-function nextMove() {
-    //left값을 이용한다
-    if(slideCount % mainSlide.length == 0) {
-         
-    } else {
-        mainSlideAll.style.left = `${slideWidth*slideCount}px`
-    };
-    slideCount++;
-
-    
-}
-
-
-
-for (let i = 0; i < mainSlide.length; i++) {
+for (let i = 0; i < slides.length; i++) {
     if (i == 0) {
         pagination.innerHTML += `<li class="indic_on"></li>`;
     } else {
-        pagination.innerHTML += `<li></li>`;
-    }
-}; //슬라이드 개수 만큼 인디케이터 개수 증가
+        pagination.innerHTML += '<li></li>';
+    };
+};
+//페이지네이션 생성
+
+let firstSlide = slides[0];
+let lastSlide = slides[slideCount - 1];
+let firstElem = document.createElement('div');
+let lastElem = document.createElement('div');
+
+
+
+//무한 슬라이드 형식 구현
+
+
+
+
+
+
 
 gnbExit.addEventListener('click', ctrlGnbWindow);
 gnbBtn.addEventListener('click', ctrlGnbWindow);
@@ -196,6 +187,4 @@ d2Titles.forEach((d2Title) => {
     d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3', '.menu_d2_title .act'));
 });
 
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
 // class 나 id 지정할 때 #이랑 .이 붙었는지 잘 확인하자
