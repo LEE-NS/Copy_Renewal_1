@@ -252,7 +252,7 @@
     flex-wrap: nowrap;
     position: relative;
     
-    width: 500%; /* 고정값이 아닌 변할 수 있는 값으로 줘야 한다. 스크립트로   */
+    /* width: 700%; */ /* 고정값이 아닌 변할 수 있는 값으로 줘야 한다. 스크립트로   */
 }
 .main_slide {
     position: relative;
