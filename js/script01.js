@@ -143,6 +143,7 @@ repeatSlide() - 일정 시간마다 nextSlide()가 순환 반복되는 함수
 */
 let slideFrame = document.querySelector('.main_slide_all');
 let slides = document.querySelectorAll('.main_slide');
+let slide = document.querySelector('.main_slide');
 let slideCount = slides.length;
 let currSlide = 0;
 
@@ -162,9 +163,30 @@ let lastSlide = slides[slideCount - 1];
 let firstElem = document.createElement('div');
 let lastElem = document.createElement('div');
 
+slides.forEach((i) => {i.style.left = `0px`});
+
+/* slides[0].before(firstElem);
+slides[slideCount - 1].after(lastElem);
+
+firstElem.innerHTML = lastSlide.innerHTML;
+lastElem.innerHTML = firstSlide.innerHTML;
+
+firstElem.classList.add('main_slide');
+lastElem.classList.add('main_slide');
+
+slideFrame.setAttribute("style", `width: ${(slides.length + 2) * slide.clientWidth}px`); */
+
 
 
 //무한 슬라이드 형식 구현
+//첫 번째 슬라이드와 마지막 슬라이드를 선택
+//첫 번째 슬라이드와 마지막 슬라이드의 각각 이전과 다음에 들어갈 빈 노드(div)를 하나씩 만든다
+//만들어진 빈 노드를 해당 위치에 배치한다.
+//슬라이드 전체의 이전에 들어가는 빈 노드에는 마지막 슬라이드의 복사본을, 이후에 들어가는 빈 노드에는 첫 슬라이드의 복사본을 넣는다.
+//(굳이 빈 노드를 만들어서 넣는 이유 : 같은 노드를 생성했을 때의 스크립트 적용 시에 일어날 오류를 방지하기 위함인 거 같음)
+//<cloneOf5><1><2><3><4><5><cloneOf1> 과 같이 슬라이드가 배치된다.
+//전체 슬라이드의 크기가 변경되었기 때문에 다시 전체 슬라이드의 크기를 구해준다.(main_slide_all의 너비를 고정시키지 말고 스크립트를 통해 이후에 슬라이드가 추가되어도 유동적인 너비를 가질 수 있도록 한다.)
+//HTML을 이용한 태그로 작성하지 않는 이유 : semantic mark-up의 유지, 슬라이드 개수에 따라 무한 슬라이드 구현으로 추가되는 노드들이 유동적이여야 하기 때문.
 
 
 

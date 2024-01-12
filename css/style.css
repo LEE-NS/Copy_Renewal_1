@@ -249,10 +249,14 @@
 }
 .main_slide_all {
     display: flex;
+    flex-wrap: nowrap;
     position: relative;
-    width: 500%;
+    
+    width: 500%; /* 고정값이 아닌 변할 수 있는 값으로 줘야 한다. 스크립트로   */
 }
 .main_slide {
+    position: relative;
+    /* left: 0; 은 오류 방지를 위해 스크립트에서 적용 */
     width: 100%;
 }
 .main_slide img {
