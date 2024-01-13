@@ -145,6 +145,7 @@ let slideFrame = document.querySelector('.main_slide_all');
 let slideFrameWidth = slideFrame.clientWidth;
 let slides = document.querySelectorAll('.main_slide');
 let slide = document.querySelector('.main_slide');
+let slideWidth = slide.clientWidth; 
 
 let currSlide = 0;
 
@@ -159,8 +160,31 @@ for (let i = 0; i < slides.length; i++) {
 };
 //페이지네이션 생성
 
+let firstSlide = slides[0];
+let lastSlide = slides[slides.length - 1];
+let beforeElem = document.createElement('div');
+let afterElem = document.createElement('div');
+//첫 번째와 마지막 슬라이드 선택, 복사된 슬라이드가 들어갈 빈 노드 생성
+
+lastSlide.classList.forEach((c) => {beforeElem.classList.add(c)});
+beforeElem.innerHTML = lastSlide.innerHTML;
+firstSlide.classList.forEach((c) => {afterElem.classList.add(c)});
+afterElem.innerHTML = firstSlide.innerHTML;
+//beforeElem과 afterElem에 각각 마지막 슬라이드, 첫 번째 슬라이드의 클래스와 내부 노드를 복사해서 붙여넣음
+
+slides[0].before(beforeElem);
+slides[slides.length - 1].after(afterElem);
+//첫 번째 슬라이드와 마지막 슬라이드의 전과 후에 각각의 요소를 배치
+
+slideFrame.style.width = `${(slides.length + 2 ) * 100}%`;
+slideFrame.style.left = `-100%`
+//슬라이드 전체 너비의 비율을 지정(슬라이드 개수에 따른 것이므로 바뀔 필요 x), 복사된 슬라이드가 먼저 보이면 안되기에 left로 -100% 이동(비율로 값을 줬기에 오류 걱정 x) 
+
+ 
 
 
+//노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.
+//slideFrame.style.width는 값이 string으로 반환됨( ex)'100px' ). slideFrameWidth는 값을 숫자로만 반환한다( clientWidth의 특성, ex)100 ). 주의할 것.
 
 
 //무한 슬라이드 형식 구현
