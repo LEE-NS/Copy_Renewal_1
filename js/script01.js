@@ -142,9 +142,10 @@ prevSlide() - 이전 슬라이드로 이동
 repeatSlide() - 일정 시간마다 nextSlide()가 순환 반복되는 함수
 */
 let slideFrame = document.querySelector('.main_slide_all');
+let slideFrameWidth = slideFrame.clientWidth;
 let slides = document.querySelectorAll('.main_slide');
 let slide = document.querySelector('.main_slide');
-let slideCount = slides.length;
+
 let currSlide = 0;
 
 let pagination = document.querySelector('.slide_indic > ul');
@@ -158,35 +159,8 @@ for (let i = 0; i < slides.length; i++) {
 };
 //페이지네이션 생성
 
-let firstSlide = slides[0];
-let lastSlide = slides[slideCount - 1];
-let firstElem = document.createElement('div');
-let lastElem = document.createElement('div');
 
-slideFrame.style.width = `0`;
-slideFrame.style.width = `${(slideCount + 2) * 100}%`;
-//전체 슬라이드 너비를 구한다
 
-firstElem.innerHTML = lastSlide.innerHTML;
-lastElem.innerHTML = firstSlide.innerHTML;
-
-firstElem.classList.add('main_slide');
-lastElem.classList.add('main_slide');
-
-slides[0].before(firstElem);
-slides[slideCount - 1].after(lastElem);
-//무한 슬라이드를 위한 사본 슬라이드 생성
-
-slideFrame.style.left = `-${slide.clientWidth}px`
-//초기 로드되는 화면은 첫 번째 슬라이드가 오도록 전체 슬라이드의 left 값 조정
-
-slides.forEach((i) => {i.style.left = `0px`});
-for (let i = 0; i < slides.length; i++) {
-    slides[i].style.left = `${i * slide.clientWidth}px`;
-    console.log(slides[i].style.left = `${i * slide.clientWidth}px`);
-};
-//원본 슬라이드에 left: 0 준 뒤 index 기준으로 슬라이드 너비값만큼 left값을 줘서 정렬
-//left값으로 전체 슬라이드를 움직인다
 
 
 //무한 슬라이드 형식 구현
