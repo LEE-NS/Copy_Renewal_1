@@ -180,8 +180,69 @@ slideFrame.style.width = `${(slides.length + 2 ) * 100}%`;
 slideFrame.style.left = `-100%`
 //슬라이드 전체 너비의 비율을 지정(슬라이드 개수에 따른 것이므로 바뀔 필요 x), 복사된 슬라이드가 먼저 보이면 안되기에 left로 -100% 이동(비율로 값을 줬기에 오류 걱정 x) 
 
- 
 
+
+let nextBtn = document.querySelector('.next_btn');
+let prevBtn = document.querySelector('.prev_btn');
+
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+function nextSlide() {
+    //다음 슬라이드로 이동
+    //슬라이드 전체 left를 -100%씩 옮긴다. currSlide도 1씩 증가(0번째 슬라이드 기준 '-100%')
+    //'-500%'이 마지막 슬라이드이다.
+    //'-600%'가 되면 슬라이드가 화면 전체에 들어올 때, 원본 0번째 슬라이드가 위치한 left 값인 -100%로 돌아오게 한다 (실행되는 순서에 주의할 것)
+    //'-600%'가 되면 currSlide는 0이 되어야 한다. currSlide는 가장 마지막 줄에 넣는 것이 자연스럽다.
+    let slideFrameLeft = parseInt(slideFrame.style.left);
+
+    currSlide++;
+
+    if(currSlide == slides.length) {
+        slideFrame.style.left = `${slideFrameLeft - 100}%`;
+        
+        setTimeout(() => {
+            slideFrame.classList.add('main_slide_all_ani');
+            slideFrame.style.left = '-100%';
+        }, 200);
+
+        currSlide = 0;
+        
+    } else {
+        slideFrame.style.left = `${slideFrameLeft - 100}%`;
+    }
+
+    slideFrame.classList.remove('main_slide_all_ani')
+
+    console.log(currSlide);  
+}; 
+//다음 슬라이드로 이동
+
+function prevSlide() {
+    let slideFrameLeft = parseInt(slideFrame.style.left);
+
+    currSlide--;
+
+    if(currSlide < 0) {
+        slideFrame.style.left = `${slideFrameLeft + 100}%`;
+        
+        setTimeout(() => {
+            slideFrame.classList.add('main_slide_all_ani');
+            slideFrame.style.left = `-${slides.length * 100}%`;
+        }, 200);
+
+        currSlide = slides.length - 1;
+        
+    } else {
+        slideFrame.style.left = `${slideFrameLeft + 100}%`;
+    };
+
+    slideFrame.classList.remove('main_slide_all_ani');
+
+    console.log(currSlide);
+};
+//이전 슬라이드로 이동
+//남은 함수 : 자동 슬라이드, 인디케이터 이동
 
 //노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.
 //slideFrame.style.width는 값이 string으로 반환됨( ex)'100px' ). slideFrameWidth는 값을 숫자로만 반환한다( clientWidth의 특성, ex)100 ). 주의할 것.

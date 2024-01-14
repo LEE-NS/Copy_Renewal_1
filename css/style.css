@@ -251,8 +251,11 @@
     display: flex;
     flex-wrap: nowrap;
     position: relative;
-    
+    transition: left 0.2s ease-in-out;
     /* width: 700%; */ /* 고정값이 아닌 변할 수 있는 값으로 줘야 한다. 스크립트로   */
+}
+.main_slide_all_ani {
+    transition: none !important;
 }
 .main_slide {
     position: relative;
