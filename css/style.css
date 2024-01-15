@@ -324,9 +324,10 @@
     border-radius: 15px;
     background-color: #888888;
 }
-.slide_indic .indic_on {
-    width: 24px;
-    background-color: #cd4831;
+.indic_on {
+    width: 24px !important;
+    background-color: #cd4831 !important;
+    transition: all 0.2s ease-in-out !important;
 }
 .trust {
     margin: 50px 15px;

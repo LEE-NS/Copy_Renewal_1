@@ -131,16 +131,9 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
 };
 // 아코디언 메뉴 
 
-/* 
-메인 슬라이드 만들기
 
-<함수>
-슬라이드의 수에 따라 node를 생성하는 for loop
-무한 슬라이드 구현을 위한 슬라이드 복사 및 복사된 슬라이드에서 원본 슬라이드로의 이동 로직
-nextSlide() - 다음 슬라이드로 이동
-prevSlide() - 이전 슬라이드로 이동
-repeatSlide() - 일정 시간마다 nextSlide()가 순환 반복되는 함수
-*/
+/* 메인 슬라이드 */
+
 let slideFrame = document.querySelector('.main_slide_all');
 let slideFrameWidth = slideFrame.clientWidth;
 let slides = document.querySelectorAll('.main_slide');
@@ -148,17 +141,6 @@ let slide = document.querySelector('.main_slide');
 let slideWidth = slide.clientWidth; 
 
 let currSlide = 0;
-
-let pagination = document.querySelector('.slide_indic > ul');
-
-for (let i = 0; i < slides.length; i++) {
-    if (i == 0) {
-        pagination.innerHTML += `<li class="indic_on"></li>`;
-    } else {
-        pagination.innerHTML += '<li></li>';
-    };
-};
-//페이지네이션 생성
 
 let firstSlide = slides[0];
 let lastSlide = slides[slides.length - 1];
@@ -179,7 +161,6 @@ slides[slides.length - 1].after(afterElem);
 slideFrame.style.width = `${(slides.length + 2 ) * 100}%`;
 slideFrame.style.left = `-100%`
 //슬라이드 전체 너비의 비율을 지정(슬라이드 개수에 따른 것이므로 바뀔 필요 x), 복사된 슬라이드가 먼저 보이면 안되기에 left로 -100% 이동(비율로 값을 줬기에 오류 걱정 x) 
-
 
 
 let nextBtn = document.querySelector('.next_btn');
@@ -206,15 +187,16 @@ function nextSlide() {
             slideFrame.style.left = '-100%';
         }, 200);
 
-        currSlide = 0;
-        
+        currSlide = 0;        
     } else {
         slideFrame.style.left = `${slideFrameLeft - 100}%`;
     }
 
     slideFrame.classList.remove('main_slide_all_ani')
 
-    console.log(currSlide);  
+    console.log(currSlide);
+
+    currIndic();
 }; 
 //다음 슬라이드로 이동
 
@@ -240,9 +222,39 @@ function prevSlide() {
     slideFrame.classList.remove('main_slide_all_ani');
 
     console.log(currSlide);
+
+    currIndic();
 };
 //이전 슬라이드로 이동
-//남은 함수 : 자동 슬라이드, 인디케이터 이동
+
+let pagination = document.querySelector('.slide_indic > ul');
+
+for (let i = 0; i < slides.length; i++) {
+    if (i == 0) {
+        pagination.innerHTML += `<li class="indic_on"></li>`;
+    } else {
+        pagination.innerHTML += '<li></li>';
+    };
+};
+//페이지네이션 생성
+
+let indics = document.querySelectorAll('.slide_indic ul li') 
+
+currIndic();
+
+function currIndic() {
+    indics.forEach((s) => {s.classList.remove('indic_on')});
+    indics[currSlide].classList.add('indic_on')
+};
+//현재 슬라이드의 순번에 따라 인디케이터 스타일 변화
+
+
+
+//이건 아닌듯, '3초마다 nextSlide가 실행' 되도록 해야 한다. 위의 코드는 '3초 후에 실행'.
+
+
+
+//남은 함수 : 자동 슬라이드
 
 //노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.
 //slideFrame.style.width는 값이 string으로 반환됨( ex)'100px' ). slideFrameWidth는 값을 숫자로만 반환한다( clientWidth의 특성, ex)100 ). 주의할 것.
@@ -257,10 +269,6 @@ function prevSlide() {
 //<cloneOf5><1><2><3><4><5><cloneOf1> 과 같이 슬라이드가 배치된다.
 //전체 슬라이드의 크기가 변경되었기 때문에 다시 전체 슬라이드의 크기를 구해준다.(main_slide_all의 너비를 고정시키지 말고 스크립트를 통해 이후에 슬라이드가 추가되어도 유동적인 너비를 가질 수 있도록 한다.)
 //HTML을 이용한 태그로 작성하지 않는 이유 : semantic mark-up의 유지, 슬라이드 개수에 따라 무한 슬라이드 구현으로 추가되는 노드들이 유동적이여야 하기 때문.
-
-
-
-
 
 
 
