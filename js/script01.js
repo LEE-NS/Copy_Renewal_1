@@ -194,8 +194,6 @@ function nextSlide() {
 
     slideFrame.classList.remove('main_slide_all_ani')
 
-    console.log(currSlide);
-
     currIndic();
 }; 
 //다음 슬라이드로 이동
@@ -220,8 +218,6 @@ function prevSlide() {
     };
 
     slideFrame.classList.remove('main_slide_all_ani');
-
-    console.log(currSlide);
 
     currIndic();
 };
@@ -257,12 +253,32 @@ indics.forEach((elem, i) => {
 });
 // 인디케이터 클릭 시 해당 index의 슬라이드로 이동
 
-setInterval(nextSlide, 5000);
-//5초 마다 다음 슬라이드로 이동
+let autoLoopSlide = setInterval(nextSlide, 5000);
 
-//마우스 호버 시 setInterval 중지, 마우스 아웃 시 setInterval 재개. - '함수를 변수에 저장해서 다른 함수에서 사용'
+slideFrame.addEventListener('mouseover', function() {
+    clearInterval(autoLoopSlide);
+});
+slideFrame.addEventListener('mouseout', function() {
+    autoLoopSlide = setInterval(nextSlide, 5000)
+});
+//5초 마다 다음 슬라이드로 이동, 마우스 오버 시에 멈춤, 마우스 아웃 시에 재시작
 
-//남은 것 : 슬라이드 위에 마우스 호버 시 슬라이드 자동 전환 중지, 모바일 스와이프 동작, 에코모드로 인해 레이아웃 망가지는 현상 해결
+
+
+
+
+
+
+slides.forEach((elem) => {elem.addEventListener('click', function(e) {
+    console.log('이벤트가 발생한 실제 노드 :', e.target);
+    console.log('이벤트가 발생한 현재 대상 (내가 클릭 이벤트를 지정한 노드) :', e.currentTarget);
+    console.log('이벤트의 타입 :', e.type);
+    console.log('이벤트의 키 코드 :', e.keycode);
+    console.log('이벤트 객체(객체 내부의 모든 프로퍼티 다 볼 수 있음 ㅋㅋ) : ', event)
+})});
+//이벤트 프로퍼티 참고용
+
+//남은 것 : 모바일 스와이프 동작, 에코모드로 인해 레이아웃 망가지는 현상 해결
 
 //노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.
 //slideFrame.style.width는 값이 string으로 반환됨( ex)'100px' ). slideFrameWidth는 값을 숫자로만 반환한다( clientWidth의 특성, ex)100 ). 주의할 것.
