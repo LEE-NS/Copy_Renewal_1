@@ -263,8 +263,11 @@ slideFrame.addEventListener('mouseout', function() {
 });
 //5초 마다 다음 슬라이드로 이동, 마우스 오버 시에 멈춤, 마우스 아웃 시에 재시작
 
-
-
+/* slideFrame.addEventListener('touchmove', () => {
+    
+    
+}); */
+//모바일 전용. 페이지의 오른쪽 끝에 가까운 좌표로 스와이프 시 prevslide 실행. 페이지의 왼쪽 끝에 가까운 좌표로 스와이프 시 nextSlide 실행.
 
 
 
