@@ -2,7 +2,10 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;    
+    box-sizing: border-box;
+    user-select: none; 
+    -webkit-user-drag: none;  
+    /* 드래그 방지 속성은 필요한 부분에만 text로 해제하는 걸로 한다 (메인 슬라이드 때문) */
 }
 ul {
     list-style: none;

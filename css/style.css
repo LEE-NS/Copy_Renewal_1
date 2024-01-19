@@ -252,22 +252,23 @@
     flex-wrap: nowrap;
     position: relative;
     transition: left 0.2s ease-in-out;
-    /* width: 700%; */ /* 고정값이 아닌 변할 수 있는 값으로 줘야 한다. 스크립트로   */
 }
 .main_slide_all_ani {
     transition: none !important;
 }
 .main_slide {
     position: relative;
-    /* left: 0; 은 오류 방지를 위해 스크립트에서 적용 */
     width: 100%;
 }
 .main_slide img {
     width: 100%;
     height: auto;
     object-fit: cover;
+    user-select: none; 
+    -webkit-user-drag: none;  
 }
 .next_btn, .prev_btn {
+    display: none;
     position: absolute;
     top: 50%;
     margin-top: -30px;

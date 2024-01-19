@@ -263,25 +263,34 @@ slideFrame.addEventListener('mouseout', function() {
 });
 //5초 마다 다음 슬라이드로 이동, 마우스 오버 시에 멈춤, 마우스 아웃 시에 재시작
 
-/* slideFrame.addEventListener('touchmove', () => {
+slideFrame.addEventListener('touchmove', () => {
+    //모바일 전용. 페이지의 오른쪽 끝에 가까운 좌표로 스와이프 시 prevslide 실행. 페이지의 왼쪽 끝에 가까운 좌표로 스와이프 시 nextSlide 실행.
     
-    
-}); */
-//모바일 전용. 페이지의 오른쪽 끝에 가까운 좌표로 스와이프 시 prevslide 실행. 페이지의 왼쪽 끝에 가까운 좌표로 스와이프 시 nextSlide 실행.
+});
+
+let startPoint = 0;
+let endPoint = 0;
+//변수 초기화
+
+slideFrame.addEventListener('mousedown', (e) => {
+    //마우스 왼쪽 버튼을 누르는 동작
+    //왼쪽 버튼 누르면 이벤트 발생
+    //발생한 이벤트 객체 안의 pageX 프로퍼티를 startPoint에 저장
+    startPoint = e.pageX;
+});
+slideFrame.addEventListener('mouseup', (e) => {
+    //눌려져 있던 마우스 왼쪽 버튼을 떼는 동작
+    //이 시점에서 슬라이드 이동을 처리
+    endPoint = e.pageX;
+    if(startPoint < endPoint) {
+        prevSlide();
+    } else if(startPoint > endPoint) {
+        nextSlide()
+    }
+});
 
 
-
-
-slides.forEach((elem) => {elem.addEventListener('click', function(e) {
-    console.log('이벤트가 발생한 실제 노드 :', e.target);
-    console.log('이벤트가 발생한 현재 대상 (내가 클릭 이벤트를 지정한 노드) :', e.currentTarget);
-    console.log('이벤트의 타입 :', e.type);
-    console.log('이벤트의 키 코드 :', e.keycode);
-    console.log('이벤트 객체(객체 내부의 모든 프로퍼티 다 볼 수 있음 ㅋㅋ) : ', event)
-})});
-//이벤트 프로퍼티 참고용
-
-//남은 것 : 모바일 스와이프 동작, 에코모드로 인해 레이아웃 망가지는 현상 해결
+//남은 것 : 모바일 스와이프 동작
 
 //노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.
 //slideFrame.style.width는 값이 string으로 반환됨( ex)'100px' ). slideFrameWidth는 값을 숫자로만 반환한다( clientWidth의 특성, ex)100 ). 주의할 것.
