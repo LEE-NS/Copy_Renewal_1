@@ -286,10 +286,11 @@ slideFrame.addEventListener('mouseup', (e) => {
 
 
 
-slideFrame.addEventListener('touchmove', () => {
-    //모바일 전용. 페이지의 오른쪽 끝에 가까운 좌표로 스와이프 시 prevslide 실행. 페이지의 왼쪽 끝에 가까운 좌표로 스와이프 시 nextSlide 실행.
+/* slideFrame.addEventListener('touchmove', () => {
     
-});
+    
+}); */
+//모바일 전용. 페이지의 오른쪽 끝에 가까운 좌표로 스와이프 시 prevslide 실행. 페이지의 왼쪽 끝에 가까운 좌표로 스와이프 시 nextSlide 실행.
 
 
 //남은 것 : 모바일 스와이프 동작
