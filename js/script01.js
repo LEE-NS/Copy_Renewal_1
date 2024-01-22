@@ -263,6 +263,8 @@ slideFrame.addEventListener('mouseout', function() {
 });
 //5초 마다 다음 슬라이드로 이동, 마우스 오버 시에 멈춤, 마우스 아웃 시에 재시작
 
+
+
 let startPoint = 0;
 let endPoint = 0;
 //변수 초기화
@@ -283,17 +285,22 @@ slideFrame.addEventListener('mouseup', (e) => {
         nextSlide()
     }
 });
+// 드래그 동작 (pc용)
+
+slideFrame.addEventListener('mousedown', (e) => {
+    startPoint = e.touches[0].pageX;
+});
+slideFrame.addEventListener('mouseup', (e) => {
+    endPoint = e.touches[0].pageX;
+    if(startPoint < endPoint) {
+        prevSlide();
+    } else if(startPoint > endPoint) {
+        nextSlide()
+    }
+});
+// 스와이프 동작 (모바일용)
 
 
-
-/* slideFrame.addEventListener('touchmove', () => {
-    
-    
-}); */
-//모바일 전용. 페이지의 오른쪽 끝에 가까운 좌표로 스와이프 시 prevslide 실행. 페이지의 왼쪽 끝에 가까운 좌표로 스와이프 시 nextSlide 실행.
-
-
-//남은 것 : 모바일 스와이프 동작
 
 //노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.
 //slideFrame.style.width는 값이 string으로 반환됨( ex)'100px' ). slideFrameWidth는 값을 숫자로만 반환한다( clientWidth의 특성, ex)100 ). 주의할 것.
