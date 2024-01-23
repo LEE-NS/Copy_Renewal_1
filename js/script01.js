@@ -134,12 +134,11 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
 
 /* 메인 슬라이드 */
 
-let slideFrame = document.querySelector('.main_slide_all');
+let slideFrame = document.querySelector('.slide_all');
 let slideFrameWidth = slideFrame.clientWidth;
-let slides = document.querySelectorAll('.main_slide');
-let slide = document.querySelector('.main_slide');
+let slides = document.querySelectorAll('.slide');
+let slide = document.querySelector('.slide');
 let slideWidth = slide.clientWidth; 
-
 let currSlide = 0;
 
 let firstSlide = slides[0];
@@ -183,7 +182,7 @@ function nextSlide() {
         slideFrame.style.left = `${slideFrameLeft - 100}%`;
         
         setTimeout(() => {
-            slideFrame.classList.add('main_slide_all_ani');
+            slideFrame.classList.add('slide_animate');
             slideFrame.style.left = '-100%';
         }, 200);
 
@@ -192,7 +191,7 @@ function nextSlide() {
         slideFrame.style.left = `${slideFrameLeft - 100}%`;
     }
 
-    slideFrame.classList.remove('main_slide_all_ani')
+    slideFrame.classList.remove('slide_animate')
 
     currIndic();
 }; 
@@ -207,7 +206,7 @@ function prevSlide() {
         slideFrame.style.left = `${slideFrameLeft + 100}%`;
         
         setTimeout(() => {
-            slideFrame.classList.add('main_slide_all_ani');
+            slideFrame.classList.add('slide_animate');
             slideFrame.style.left = `-${slides.length * 100}%`;
         }, 200);
 
@@ -217,7 +216,7 @@ function prevSlide() {
         slideFrame.style.left = `${slideFrameLeft + 100}%`;
     };
 
-    slideFrame.classList.remove('main_slide_all_ani');
+    slideFrame.classList.remove('slide_animate');
 
     currIndic();
 };
@@ -257,12 +256,13 @@ let autoLoopSlide = setInterval(nextSlide, 5000);
 
 slideFrame.addEventListener('mouseover', function() {
     clearInterval(autoLoopSlide);
+    console.log('슬라이드 멈춤');
 });
 slideFrame.addEventListener('mouseout', function() {
     autoLoopSlide = setInterval(nextSlide, 5000)
+    console.log('슬라이드 다시 시작');
 });
 //5초 마다 다음 슬라이드로 이동, 마우스 오버 시에 멈춤, 마우스 아웃 시에 재시작
-
 
 
 let startPoint = 0;
@@ -270,14 +270,9 @@ let endPoint = 0;
 //변수 초기화
 
 slideFrame.addEventListener('mousedown', (e) => {
-    //마우스 왼쪽 버튼을 누르는 동작
-    //왼쪽 버튼 누르면 이벤트 발생
-    //발생한 이벤트 객체 안의 pageX 프로퍼티를 startPoint에 저장
     startPoint = e.pageX;
 });
 slideFrame.addEventListener('mouseup', (e) => {
-    //눌려져 있던 마우스 왼쪽 버튼을 떼는 동작
-    //이 시점에서 슬라이드 이동을 처리
     endPoint = e.pageX;
     if(startPoint < endPoint) {
         prevSlide();
@@ -287,10 +282,10 @@ slideFrame.addEventListener('mouseup', (e) => {
 });
 // 드래그 동작 (pc용)
 
-slideFrame.addEventListener('mousedown', (e) => {
+slideFrame.addEventListener('touchstart', (e) => {
     startPoint = e.touches[0].pageX;
 });
-slideFrame.addEventListener('mouseup', (e) => {
+slideFrame.addEventListener('touchend', (e) => {
     endPoint = e.touches[0].pageX;
     if(startPoint < endPoint) {
         prevSlide();
