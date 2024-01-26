@@ -398,11 +398,56 @@
     color: #fff;
     background-color: #cd4831;
 }
+.now_donated {
+    margin: 0 0 50px 0;
+}
+
 
 
 /* hide */
 .hide {
     display: none;
+}
+.slide_all_s {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    transition: left 0.2s ease-in-out;
+}
+.slide_s {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    background-image: url(../img/now_donated_bg_1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.donate_infos {
+    width: 80%;
+    height: 100%; /* 태블릿, pc 사이즈에서는 60~80% 정도로 줄어들어야 한다 */
+    margin: 0 auto;
+    border-radius: 10px;
+    /* border-left: 1px solid #9a9a9a; */
+    /* border-right: 1px solid #9a9a9a; 보기 어색함*/
+    background-color: #11111188;
+}
+.donate_infos_text {
+    padding: 20px 30px;
+    color: #efefef;
+    background-color: #b6614a;
+}
+.donate_infos_text .date {
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+.donate_infos_text .donate_to {
+    font-size: 19px;
+    line-height: 1.5em;
+}
+.donate_infos_text .donated_amount_infos {
+    margin: 20px;
 }
 
 
