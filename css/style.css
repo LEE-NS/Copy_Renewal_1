@@ -420,41 +420,67 @@
     background-image: url(../img/now_donated_bg_1.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: auto 450px;
 }
 .donate_infos {
     width: 80%;
-    height: 360px; /* 태블릿, pc 사이즈에서는 60~80% 정도로 줄어들어야 한다 */
-    margin: 45px auto;
+    height: 400px; /* 태블릿, pc 사이즈에서는 60~80% 정도로 줄어들어야 한다 */
+    margin: 25px auto;
     border-radius: 10px;
     /* border-left: 1px solid #9a9a9a; */
     /* border-right: 1px solid #9a9a9a; 보기 어색함*/
     background-color: #111111BA;
 }
 .donate_infos_text {
-    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 30px;
     text-align: center;
     color: #efefef;
 }
 .donate_infos_text .date {
-    margin-bottom: 20px;
+    margin: 10px 0;
     font-size: 12px;
 }
 .donate_infos_text .donate_to {
     font-size: 19px;
+    font-weight: 900;
     line-height: 1.5em;
 }
 .donate_infos_text .donated_amount_infos {
-    margin: 20px;
+    margin: 15px;
 }
 .donated_amount_infos .donated_amount {
     padding: 15px 20px;
 }
 .donated_amount .d_name {
+    width: 100%;
+    margin-bottom: 5px;
     font-size: 12px;
+    text-align: left;
+}
+.donated_amount .d_name::after {
+    display: inline-block;
+    content: "";
+    width: 5px;
+    height: 5px;
+    margin: 0 0 10px 5px;
+    border-radius: 100%;
+    background-color: #ff0000;
 }
 .donated_amount .amount {
-    font-size: 22px;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 900;
+    text-align: left;
+}
+.donated_amount .amount span {
+    margin-left: 5px;
+    font-size: 12px;
 }
 .donated_infos_btn {
     display: flex;
@@ -474,12 +500,32 @@
     position: absolute;
     top: 50%;
 }
-.prev_btn_s {
-    left: 5px;
+.next_btn_s span:hover, .prev_btn_s span:hover {
+    border-top: 4px solid #efefef;
+    border-left: 4px solid #efefef;
+}
+.next_btn_s span, .prev_btn_s span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-top: 3px solid #11111199;
+    border-left: 3px solid #11111199;
+    transition: border 0.2s ease-in-out;
+    text-indent: -99999px;
 }
 .next_btn_s {
-    right: 5px;
+    right: 15px;
 }
+.next_btn_s span {
+    transform: rotate(135deg);
+}
+.prev_btn_s {
+    left: 15px;
+}
+.prev_btn_s span {
+    transform: rotate(-45deg);
+}
+
 
 /* 태블릿 */
 @media ( min-width: 768px ) {}

@@ -295,23 +295,21 @@ slideFrame.addEventListener('touchend', (e) => {
 });
 // 스와이프 동작 (모바일용)
 
+let donateDate = document.querySelector('.date');
+let today = new Date();
+
+donateDate.innerHTML = "";
+
+let todayYear = today.getFullYear();
+let todayMonth = (today.getMonth() + 1).toString().padStart(2, '0');
+let todayDay = today.getDate();
+
+donateDate.innerHTML = `${todayYear}. ${todayMonth}. ${todayDay} 기준`;
+//현재 날짜 표시
 
 
 //노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.
 //slideFrame.style.width는 값이 string으로 반환됨( ex)'100px' ). slideFrameWidth는 값을 숫자로만 반환한다( clientWidth의 특성, ex)100 ). 주의할 것.
-
-
-//무한 슬라이드 형식 구현
-//첫 번째 슬라이드와 마지막 슬라이드를 선택
-//첫 번째 슬라이드와 마지막 슬라이드의 각각 이전과 다음에 들어갈 빈 노드(div)를 하나씩 만든다
-//만들어진 빈 노드를 해당 위치에 배치한다.
-//슬라이드 전체의 이전에 들어가는 빈 노드에는 마지막 슬라이드의 복사본을, 이후에 들어가는 빈 노드에는 첫 슬라이드의 복사본을 넣는다.
-//(굳이 빈 노드를 만들어서 넣는 이유 : 같은 노드를 생성했을 때의 스크립트 적용 시에 일어날 오류를 방지하기 위함인 거 같음)
-//<cloneOf5><1><2><3><4><5><cloneOf1> 과 같이 슬라이드가 배치된다.
-//전체 슬라이드의 크기가 변경되었기 때문에 다시 전체 슬라이드의 크기를 구해준다.(main_slide_all의 너비를 고정시키지 말고 스크립트를 통해 이후에 슬라이드가 추가되어도 유동적인 너비를 가질 수 있도록 한다.)
-//HTML을 이용한 태그로 작성하지 않는 이유 : semantic mark-up의 유지, 슬라이드 개수에 따라 무한 슬라이드 구현으로 추가되는 노드들이 유동적이여야 하기 때문.
-
-
 
 gnbExit.addEventListener('click', ctrlGnbWindow);
 gnbBtn.addEventListener('click', ctrlGnbWindow);
