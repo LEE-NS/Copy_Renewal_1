@@ -53,6 +53,29 @@ function ctrlGnbWindow() {
 }; 
 //GNB 창 열기(이거보다 훨씬 깔끔하게 할 수 있을듯. 바꾸기)
 
+function menuHeight () {
+    // 예: menu_d1의 전체 높이를 결정하기 위해 menu_d1_item의 높이를 구해온다
+    let itemD1 = document.querySelector('.menu_d1_title');
+    let menuD1All = document.querySelectorAll('.menu_d1');
+
+    let itemD1Height = parseInt(window.getComputedStyle(itemD1).height);
+    //menu_d1_item의 표시된 height를 가져온다.
+    menuD1All.forEach((elem) => {
+        elem.style.height = '';
+    });
+    //menu_d1 각각의 전체 높이 초기화
+
+    for(i = 0; i < menuD1All.length; i++) {
+        let d1Length = menuD1All[i].querySelectorAll('.menu_d1_item').length;
+        menuD1All[i].style.height = `${d1Length * itemD1Height}px`;
+        console.log(menuD1All[i].style.height);
+    };
+    //각 menu_d1의 높이는 d1_item의 개수와 d1_item 의 높이를 곱한 것으로 한다. 
+};
+//각 메뉴의 크기가 항목 개수의 높이의 합으로 결정되게끔 한다. 
+menuHeight();
+
+
 function gnbClassRemoveD0(titles, windows, titleSymbols) {
     titles.forEach((elem) => {
         elem.classList.remove('active')

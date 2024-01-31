@@ -148,6 +148,7 @@
 .menu_d0_item {} */
 .menu_d0_title {
     position: relative;
+    height: 52px;
     padding: 15px;
     border-bottom: 1px solid #ddd;
     font-weight: 600;
@@ -167,6 +168,7 @@
 }
 .menu_d1_title {
     position: relative;
+    height: 52px;
     padding: 15px 15px 15px 12px;
     font-size: 15px;
     border-bottom: 1px dotted #ccc;
@@ -186,6 +188,7 @@
 }
 .menu_d2_title {
     position: relative;
+    height: 52px;
     padding: 15px 25px 15px 29px;
     font-size: 14px;
     border-bottom: 1px dotted #eee;
@@ -200,6 +203,7 @@
     overflow: hidden;
 }
 .menu_d3_item {
+    height: 52px;
     padding: 15px 25px 15px 38px;
     font-size: 13px;
     background-color: #ddd;
