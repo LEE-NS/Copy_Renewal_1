@@ -29,58 +29,44 @@ header
             
  */
 
-let gnbWindow = document.querySelector('.gnb_wrap');
-let gnbList = document.querySelector('.gnb');
+let gnbWrap = document.querySelector('.gnb_wrap');
+let gnbScrollWrap = document.querySelector('.gnb_scroll_wrap');
 let gnbExit = document.querySelector('.gnb_exit');
 let gnbBtn = document.querySelector('.gnb_btn');
+
 let d0Titles = document.querySelectorAll('.menu_d0_title');
 let d1Titles = document.querySelectorAll('.menu_d1_title');
 let d2Titles = document.querySelectorAll('.menu_d2_title');
 
 
-function ctrlGnbWindow() {
-    let dp = gnbWindow.style.display;
+gnbExit.addEventListener('click', () => {
+    gnbWrap.classList.remove('gnb_open_bg');
+    gnbScrollWrap.classList.remove('gnb_open');
+    document.body.style.overflow = 'auto';
+});
+// 메뉴 창 닫기
+gnbWrap.addEventListener('click', (e) => {
+    let gnbWrapWidth = parseInt(window.getComputedStyle(gnbWrap).width);
+    if(e.pageX > (gnbWrapWidth * 0.7)) {
+        gnbWrap.classList.remove('gnb_open_bg');
+        gnbScrollWrap.classList.remove('gnb_open');
+        document.body.style.overflow = 'auto';
+    }
+});
+// 메뉴 창 닫기 (메뉴 외부를 클릭할 경우에도)
+gnbBtn.addEventListener('click', () => {
+    gnbWrap.classList.add('gnb_open_bg');
+    gnbScrollWrap.classList.add('gnb_open');
+    document.body.style.overflow = 'hidden';
+});
+// 메뉴 창 열기
+// + Modal 열려있을 시 메인 페이지 스크롤 방지
 
-    if (dp == 'flex') {
-        gnbWindow.style.backgroundColor = 'transparent';
-        gnbList.style.backgroundColor = 'transparent';
-        gnbWindow.style.display = 'none'
-    } else {
-        gnbWindow.style.backgroundColor = '#11111199';
-        gnbList.style.backgroundColor = '#ffffff';
-        gnbWindow.style.display = 'flex'
-    };
-}; 
-//GNB 창 열기(이거보다 훨씬 깔끔하게 할 수 있을듯. 바꾸기)
-
-function menuHeight () {
-    // 예: menu_d1의 전체 높이를 결정하기 위해 menu_d1_item의 높이를 구해온다
-    let itemD1 = document.querySelector('.menu_d1_title');
-    let menuD1All = document.querySelectorAll('.menu_d1');
-
-    let itemD1Height = parseInt(window.getComputedStyle(itemD1).height);
-    //menu_d1_item의 표시된 height를 가져온다.
-    menuD1All.forEach((elem) => {
-        elem.style.height = '';
-    });
-    //menu_d1 각각의 전체 높이 초기화
-
-    for(i = 0; i < menuD1All.length; i++) {
-        let d1Length = menuD1All[i].querySelectorAll('.menu_d1_item').length;
-        menuD1All[i].style.height = `${d1Length * itemD1Height}px`;
-        console.log(menuD1All[i].style.height);
-    };
-    //각 menu_d1의 높이는 d1_item의 개수와 d1_item 의 높이를 곱한 것으로 한다. 
-};
-//각 메뉴의 크기가 항목 개수의 높이의 합으로 결정되게끔 한다. 
-menuHeight();
-
-
-function gnbClassRemoveD0(titles, windows, titleSymbols) {
+function gnbClassRemoveD0(titles, lists, titleSymbols) {
     titles.forEach((elem) => {
         elem.classList.remove('active')
     });
-    windows.forEach((elem) => {
+    lists.forEach((elem) => {
         elem.classList.remove('open_d0')
     });
     titleSymbols.forEach((elem) => {
@@ -89,11 +75,11 @@ function gnbClassRemoveD0(titles, windows, titleSymbols) {
 };
 // GNB에서 상호작용시 부여된 클래스 초기화(d0용)
 
-function gnbClassRemove(titles, windows, titleSymbols) {
+function gnbClassRemove(titles, lists, titleSymbols) {
     titles.forEach((elem) => {
         elem.classList.remove('active')
     });
-    windows.forEach((elem) => {
+    lists.forEach((elem) => {
         elem.classList.remove('open')
     });
     titleSymbols.forEach((elem) => {
@@ -152,7 +138,22 @@ function accrdCtrl(pointingNode, pointingNodes, targetNode, actClassHere) {
     };
     //클릭된 항목에게 알맞는 클래스 부여
 };
-// 아코디언 메뉴 
+
+d0Titles.forEach((d0Title) => {
+    d0Title.addEventListener('click', () => accrdCtrlD0(d0Title, d0Titles, '.menu_d1'));
+});
+
+d1Titles.forEach((d1Title) => {
+    d1Title.addEventListener('click', () => accrdCtrl(d1Title, d1Titles, '.menu_d2', '.menu_d1_title .act'));
+});
+
+d2Titles.forEach((d2Title) => {
+    d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3', '.menu_d2_title .act'));
+});
+
+// 아코디언 메뉴
+
+
 
 
 /* 메인 슬라이드 */
@@ -331,22 +332,8 @@ donateDate.innerHTML = `${todayYear}. ${todayMonth}. ${todayDay} 기준`;
 //현재 날짜 표시
 
 
+
 //노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.
 //slideFrame.style.width는 값이 string으로 반환됨( ex)'100px' ). slideFrameWidth는 값을 숫자로만 반환한다( clientWidth의 특성, ex)100 ). 주의할 것.
-
-gnbExit.addEventListener('click', ctrlGnbWindow);
-gnbBtn.addEventListener('click', ctrlGnbWindow);
-
-d0Titles.forEach((d0Title) => {
-    d0Title.addEventListener('click', () => accrdCtrlD0(d0Title, d0Titles, '.menu_d1'));
-});
-
-d1Titles.forEach((d1Title) => {
-    d1Title.addEventListener('click', () => accrdCtrl(d1Title, d1Titles, '.menu_d2', '.menu_d1_title .act'));
-});
-
-d2Titles.forEach((d2Title) => {
-    d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3', '.menu_d2_title .act'));
-});
 
 // class 나 id 지정할 때 #이랑 .이 붙었는지 잘 확인하자
