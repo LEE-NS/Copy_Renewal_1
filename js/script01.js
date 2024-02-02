@@ -352,6 +352,8 @@ beforeElemS.innerHTML = lastSlideS.innerHTML;
 slideS[0].before(beforeElemS);
 slideS[slideS.length - 1].after(afterElemS);
 
+slideFrameS.style.width = `${(slideS.length + 2 ) * 100}%`;
+slideFrameS.style.left = `-100%`
 //container용 범용 슬라이드
 
 
