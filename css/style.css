@@ -53,6 +53,9 @@
     bottom: 0;
     left: 0;
     z-index: 99;
+
+    display: none;
+    /* 작업용 처리 none */
     
     background-color: #cd4831;
 }
@@ -210,9 +213,9 @@
 
 .menu_d2_title {
     position: relative;
-    height: 52px;
+    height: 47px;
     padding: 15px 25px 15px 29px;
-    font-size: 14px;
+    font-size: 13px;
     background-color: #eee;
 }
 /* 모바일 - GNB 메뉴 d2 */
@@ -224,9 +227,9 @@
     overflow: hidden;
 }
 .menu_d3_item {
-    height: 52px;
+    height: 42px;
     padding: 15px 25px 15px 38px;
-    font-size: 13px;
+    font-size: 12px;
     background-color: #ddd;
 }
 .menu_d3_item a::before {
@@ -253,24 +256,25 @@
 .plus span:nth-child(2) {
     transform: rotate(90deg);
 }
-/* 모바일 - GNB 메뉴 개폐 여부 표시 기호 */
+/* 모바일 - GNB 메뉴 열기/닫기 indicator */
 
 .active {
     max-height: 300vh;
     visibility: visible;
-    transition: all 1.2s;
+    transition: all 1.5s;
 }
 .open_d0 {
     border-left: 5px solid #f6805f !important;
     color: #f6805f !important;
 }
 .open {
+    color: #f6805f;
     transition: all 0.3s;
 }
 .open_symbol {
     transform: rotate(90deg) !important;
 }
-/* 모바일 - GNB 메뉴 개폐 style class */
+/* 모바일 - GNB 메뉴 열기/닫기 style class */
 
 
 
@@ -592,17 +596,18 @@
     background-size: contain;
     background-color: #f0f0f0;
 }
+.bg_title_wrap {
+    background: linear-gradient(180deg, #efefef 0%, #fff 100%);
+}
 .bg_title {
-    width: 100%;
+    width: 90%;
     height: 80px;
-    margin-bottom: 100px;
+    margin: 0 auto 100px;
     text-indent: -99999px;
-    background: url(../img/bg_ko.png),
-        linear-gradient(180deg, #efefef 0%, #fff 100%);
+    background: url(../img/bg_ko.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    background-color: #f0f0f0;
 }
 
 

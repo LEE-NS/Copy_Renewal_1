@@ -157,12 +157,11 @@ d2Titles.forEach((d2Title) => {
 
 
 /* 메인 슬라이드 */
-
 let slideFrame = document.querySelector('.slide_all');
-let slideFrameWidth = slideFrame.clientWidth;
 let slides = document.querySelectorAll('.slide');
-let slide = document.querySelector('.slide');
-let slideWidth = slide.clientWidth; 
+
+let slideFrameWidth = slideFrame.clientWidth;
+let slideWidth = slides[0].clientWidth; 
 let currSlide = 0;
 
 let firstSlide = slides[0];
@@ -330,6 +329,31 @@ let todayDay = today.getDate();
 
 donateDate.innerHTML = `${todayYear}. ${todayMonth}. ${todayDay} 기준`;
 //현재 날짜 표시
+
+
+let slideFrameS = document.querySelector('.slide_all_s');
+let slideS = document.querySelectorAll('.slide_s');
+
+let FrameWidthS = slideFrameS.clientWidth;
+let slideWidthS = slideS[0].clientWidth;
+
+let currSlideS = 0;
+
+let firstSlideS = slideS[0];
+let lastSlideS = slideS[slideS.length - 1]
+let beforeElemS = document.createElement('div')
+let afterElemS = document.createElement('div')
+
+firstSlideS.classList.forEach((c) => {afterElemS.classList.add('')})
+afterElemS.innerHTML = firstSlideS.innerHTML;
+lastSlideS.classList.forEach((c) => {beforeElemS.classList.add('')})
+beforeElemS.innerHTML = lastSlideS.innerHTML;
+
+slideS[0].before(beforeElemS);
+slideS[slideS.length - 1].after(afterElemS);
+
+//container용 범용 슬라이드
+
 
 
 
