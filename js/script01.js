@@ -354,6 +354,12 @@ slideS[slideS.length - 1].after(afterElemS);
 
 slideFrameS.style.width = `${(slideS.length + 2 ) * 100}%`;
 slideFrameS.style.left = `-100%`
+
+let nextBtnS = document.querySelector('.next_btn_s');
+let prevBtnS = document.querySelector('.prev_btn_s');
+
+nextBtnS.addEventListener('click', nextSlideS);
+prevBtnS.addEventListener('click', prevSlideS);
 //container용 범용 슬라이드
 
 
