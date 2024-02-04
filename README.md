@@ -21,15 +21,16 @@ Project hosting : LEE-NS
 <div>CSS</div>
 <div>Javascript(Vanilla)</div>
 <br><br><br><br><br><br>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>이거 적용되나</title>
 </head>
 <body>
-    <div>적용되나요?</div>
+    <header>적용여부</header>
 </body>
 </html>
