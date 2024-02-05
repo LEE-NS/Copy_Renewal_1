@@ -331,36 +331,7 @@ donateDate.innerHTML = `${todayYear}. ${todayMonth}. ${todayDay} 기준`;
 //현재 날짜 표시
 
 
-let slideFrameS = document.querySelector('.slide_all_s');
-let slideS = document.querySelectorAll('.slide_s');
-
-let FrameWidthS = slideFrameS.clientWidth;
-let slideWidthS = slideS[0].clientWidth;
-
-let currSlideS = 0;
-
-let firstSlideS = slideS[0];
-let lastSlideS = slideS[slideS.length - 1]
-let beforeElemS = document.createElement('div')
-let afterElemS = document.createElement('div')
-
-firstSlideS.classList.forEach((c) => {afterElemS.classList.add('')})
-afterElemS.innerHTML = firstSlideS.innerHTML;
-lastSlideS.classList.forEach((c) => {beforeElemS.classList.add('')})
-beforeElemS.innerHTML = lastSlideS.innerHTML;
-
-slideS[0].before(beforeElemS);
-slideS[slideS.length - 1].after(afterElemS);
-
-slideFrameS.style.width = `${(slideS.length + 2 ) * 100}%`;
-slideFrameS.style.left = `-100%`
-
-let nextBtnS = document.querySelector('.next_btn_s');
-let prevBtnS = document.querySelector('.prev_btn_s');
-
-nextBtnS.addEventListener('click', nextSlideS);
-prevBtnS.addEventListener('click', prevSlideS);
-//container용 범용 슬라이드
+//container용 범용 슬라이드(위에거 보지 말고 다시 적기)
 
 
 
