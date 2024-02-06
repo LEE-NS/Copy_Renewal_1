@@ -307,9 +307,11 @@ slideFrame.addEventListener('mouseup', (e) => {
 
 slideFrame.addEventListener('touchstart', (e) => {
     startPoint = e.touches[0].pageX;
+    console.log(startPoint);
 });
 slideFrame.addEventListener('touchend', (e) => {
-    endPoint = e.touches[0].pageX;
+    endPoint = e.changedTouches[0].pageX;
+    console.log(endPoint);
     if(startPoint < endPoint) {
         prevSlide();
     } else if(startPoint > endPoint) {
@@ -325,42 +327,87 @@ donateDate.innerHTML = "";
 
 let todayYear = today.getFullYear();
 let todayMonth = (today.getMonth() + 1).toString().padStart(2, '0');
-let todayDay = today.getDate();
+let todayDay = today.getDate().toString().padStart(2, '0');
 
 donateDate.innerHTML = `${todayYear}. ${todayMonth}. ${todayDay} 기준`;
 //현재 날짜 표시
 
 
+
+//container용 범용 슬라이드
+//1. 전체 슬라이드, 개별 슬라이드 너비 저장
+//2. 첫 번째 슬라이드 이전에는 마지막 슬라이드, 마지막 슬라이드 다음에는 첫 번째 슬라이드가 오도록 새로운 태그 생성
+//3. 다음, 이전으로 이동하는 슬라이드 함수 생성
+//4. 자동 루프 함수 생성
+
 let slideFrameS = document.querySelector('.slide_all_s');
 let slideS = document.querySelectorAll('.slide_s');
+//슬라이드 전체, 개별 슬라이드 전체
 
-let FrameWidthS = slideFrameS.clientWidth;
-let slideWidthS = slideS[0].clientWidth;
-
+let slideFrameSWidth = slideFrameS.clientWidth;
+let slideSWidth = slideS[0].clientWidth;
 let currSlideS = 0;
+//슬라이드 전체 너비, 개별 슬라이드 너비 
 
-let firstSlideS = slideS[0];
-let lastSlideS = slideS[slideS.length - 1]
-let beforeElemS = document.createElement('div')
-let afterElemS = document.createElement('div')
+let beforeE = document.createElement('div');
+let afterE = document.createElement('div');
+let startSlide = slideS[0];
+let endSlide = slideS[slideS.length - 1];
 
-firstSlideS.classList.forEach((c) => {afterElemS.classList.add('')})
-afterElemS.innerHTML = firstSlideS.innerHTML;
-lastSlideS.classList.forEach((c) => {beforeElemS.classList.add('')})
-beforeElemS.innerHTML = lastSlideS.innerHTML;
+startSlide.classList.forEach((c) => {afterE.classList.add(c)});
+afterE.innerHTML = startSlide.innerHTML;
+endSlide.classList.forEach((c) => {beforeE.classList.add(c)});
+beforeE.innerHTML = endSlide.innerHTML;
 
-slideS[0].before(beforeElemS);
-slideS[slideS.length - 1].after(afterElemS);
+slideS[slideS.length - 1].after(afterE);
+slideS[0].before(beforeE);
 
-slideFrameS.style.width = `${(slideS.length + 2 ) * 100}%`;
-slideFrameS.style.left = `-100%`
+slideFrameS.style.width = '';
+slideFrameS.style.width = `${(slideS.length + 2) * 100}%`; //전체 슬라이드 너비는 루프 슬라이드용 슬라이드까지 합친 너비여야 한다.
+slideFrameS.style.left = '';
+slideFrameS.style.left = '-100%'; //첫 번째 슬라이드를 시작위치로
 
 let nextBtnS = document.querySelector('.next_btn_s');
 let prevBtnS = document.querySelector('.prev_btn_s');
 
 nextBtnS.addEventListener('click', nextSlideS);
 prevBtnS.addEventListener('click', prevSlideS);
-//container용 범용 슬라이드
+
+function nextSlideS() {
+    currSlideS += 1;
+    slideFrameS.style.transition = 'left 0.2s';
+    slideFrameS.style.left = `-${(currSlideS + 1)*100}%`;
+    if(currSlideS === slideS.length) {
+        currSlideS = 0;
+        setTimeout(() => {
+            slideFrameS.style.transition = 'none';
+            slideFrameS.style.left = '-100%';
+        }, 200);       
+    };
+};
+
+function prevSlideS() {
+    currSlideS -= 1;
+    slideFrameS.style.transition = 'left 0.2s';
+    slideFrameS.style.left = `${(currSlideS + 1)*100}%`;
+    if(currSlideS < 0) {
+        currSlideS = slideS.length - 1;
+        setTimeout(() => {
+            slideFrameS.style.transition = 'none';
+            slideFrameS.style.left = `-${slideS.length * 100}%`;
+        }, 200);
+    };
+};
+
+if(slideS.length === 1) {
+    nextBtnS.removeEventListener('click', nextSlideS);
+    prevBtnS.removeEventListener('click', prevSlideS);
+};
+// 슬라이드가 1개인 경우 다음, 이전 슬라이드로 이동할 수 없게 한다.
+
+
+// 인디케이터 만들어 넣기
+
 
 
 
