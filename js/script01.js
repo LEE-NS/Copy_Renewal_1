@@ -405,8 +405,15 @@ if(slideS.length === 1) {
 };
 // 슬라이드가 1개인 경우 다음, 이전 슬라이드로 이동할 수 없게 한다.
 
-
-// 인디케이터 만들어 넣기
+let paginationS = document.querySelector('.slide_indic_s > ul');
+for (let i = 0; i < slideS.length; i++) {
+    if(i == 0) {
+        paginationS.innerHTML += `<li class="indic_s_on"></li>`;
+    } else {
+        paginationS.innerHTML += `<li></li>`;
+    }  
+};
+// 인디케이터 만들어 넣기, currSlideS()에 따라 스타일이 바뀌어야 한다. 
 
 
 

@@ -360,7 +360,7 @@
     height: 12px;
     margin: 0 3px;
     border-radius: 15px;
-    background-color: #888888;
+    background-color: #888888bb;
 }
 .indic_on {
     width: 24px !important;
@@ -559,6 +559,31 @@
 }
 .prev_btn_s span {
     transform: rotate(-45deg);
+}
+.slide_indic_s {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    width: 100%;
+    margin-left: -50%;
+}
+.slide_indic_s ul {
+    display: flex;
+    justify-content: center;
+}
+.slide_indic_s li {
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    border-radius: 50px;
+    transition: background-color 0.2s;
+    background-color: #888888bb;
+}
+.indic_s_on {
+    background-color: #cd4831 !important;
+}
+.slide_indic_s li:last-child {
+    margin-right: 0;
 }
 .campaign {
     margin-top: 50px;
