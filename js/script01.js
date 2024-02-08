@@ -275,15 +275,16 @@ indics.forEach((elem, i) => {
 });
 // 인디케이터 클릭 시 해당 index의 슬라이드로 이동
 
-let autoLoopSlide = setInterval(nextSlide, 5000);
-
-slideFrame.addEventListener('mouseover', function() {
-    clearInterval(autoLoopSlide);
-    console.log('슬라이드 멈춤');
-});
-slideFrame.addEventListener('mouseout', function() {
-    autoLoopSlide = setInterval(nextSlide, 5000)
-    console.log('슬라이드 다시 시작');
+window.addEventListener('load', () => {
+    let autoLoopSlide = setInterval(nextSlide, 5000);
+    slideFrame.addEventListener('mouseover', function() {
+        clearInterval(autoLoopSlide);
+        console.log('슬라이드 멈춤');
+    });
+    slideFrame.addEventListener('mouseout', function() {
+        autoLoopSlide = setInterval(nextSlide, 5000)
+        console.log('슬라이드 다시 시작');
+    });
 });
 //5초 마다 다음 슬라이드로 이동, 마우스 오버 시에 멈춤, 마우스 아웃 시에 재시작
 
@@ -340,80 +341,94 @@ donateDate.innerHTML = `${todayYear}. ${todayMonth}. ${todayDay} 기준`;
 //3. 다음, 이전으로 이동하는 슬라이드 함수 생성
 //4. 자동 루프 함수 생성
 
-let slideFrameS = document.querySelector('.slide_all_s');
-let slideS = document.querySelectorAll('.slide_s');
+let slideFrame2 = document.querySelector('.slide_all_2');
+let slide2 = document.querySelectorAll('.slide_2');
 //슬라이드 전체, 개별 슬라이드 전체
 
-let slideFrameSWidth = slideFrameS.clientWidth;
-let slideSWidth = slideS[0].clientWidth;
-let currSlideS = 0;
+let slideFrame2Width = slideFrame2.clientWidth;
+let slide2Width = slide2[0].clientWidth;
+let currSlide2 = 0;
 //슬라이드 전체 너비, 개별 슬라이드 너비 
 
 let beforeE = document.createElement('div');
 let afterE = document.createElement('div');
-let startSlide = slideS[0];
-let endSlide = slideS[slideS.length - 1];
+let startSlide = slide2[0];
+let endSlide = slide2[slide2.length - 1];
 
 startSlide.classList.forEach((c) => {afterE.classList.add(c)});
 afterE.innerHTML = startSlide.innerHTML;
 endSlide.classList.forEach((c) => {beforeE.classList.add(c)});
 beforeE.innerHTML = endSlide.innerHTML;
 
-slideS[slideS.length - 1].after(afterE);
-slideS[0].before(beforeE);
+slide2[slide2.length - 1].after(afterE);
+slide2[0].before(beforeE);
 
-slideFrameS.style.width = '';
-slideFrameS.style.width = `${(slideS.length + 2) * 100}%`; //전체 슬라이드 너비는 루프 슬라이드용 슬라이드까지 합친 너비여야 한다.
-slideFrameS.style.left = '';
-slideFrameS.style.left = '-100%'; //첫 번째 슬라이드를 시작위치로
+slideFrame2.style.width = '';
+slideFrame2.style.width = `${(slide2.length + 2) * 100}%`; //전체 슬라이드 너비는 루프 슬라이드용 슬라이드까지 합친 너비여야 한다.
+slideFrame2.style.left = '';
+slideFrame2.style.left = '-100%'; //첫 번째 슬라이드를 시작위치로
 
-let nextBtnS = document.querySelector('.next_btn_s');
-let prevBtnS = document.querySelector('.prev_btn_s');
+let nextBtn2 = document.querySelector('.next_btn_2');
+let prevBtn2 = document.querySelector('.prev_btn_2');
 
-nextBtnS.addEventListener('click', nextSlideS);
-prevBtnS.addEventListener('click', prevSlideS);
+nextBtn2.addEventListener('click', nextSlide2);
+prevBtn2.addEventListener('click', prevSlide2);
 
-function nextSlideS() {
-    currSlideS += 1;
-    slideFrameS.style.transition = 'left 0.2s';
-    slideFrameS.style.left = `-${(currSlideS + 1)*100}%`;
-    if(currSlideS === slideS.length) {
-        currSlideS = 0;
+function nextSlide2() {
+    currSlide2++;
+    slideFrame2.style.transition = 'left 0.2s';
+    slideFrame2.style.left = `-${(currSlide2 + 1)*100}%`;
+    if(currSlide2 === slide2.length) {
+        currSlide2 = 0;
         setTimeout(() => {
-            slideFrameS.style.transition = 'none';
-            slideFrameS.style.left = '-100%';
+            slideFrame2.style.transition = 'none';
+            slideFrame2.style.left = '-100%';
         }, 200);       
     };
 };
 
-function prevSlideS() {
-    currSlideS -= 1;
-    slideFrameS.style.transition = 'left 0.2s';
-    slideFrameS.style.left = `${(currSlideS + 1)*100}%`;
-    if(currSlideS < 0) {
-        currSlideS = slideS.length - 1;
+function prevSlide2() {
+    currSlide2--;
+    slideFrame2.style.transition = 'left 0.2s';
+    slideFrame2.style.left = `${(currSlide2 + 1)*100}%`;
+    if(currSlide2 < 0) {
+        currSlide2 = slide2.length - 1;
         setTimeout(() => {
-            slideFrameS.style.transition = 'none';
-            slideFrameS.style.left = `-${slideS.length * 100}%`;
+            slideFrame2.style.transition = 'none';
+            slideFrame2.style.left = `-${slide2.length * 100}%`;
         }, 200);
     };
 };
 
-if(slideS.length === 1) {
-    nextBtnS.removeEventListener('click', nextSlideS);
-    prevBtnS.removeEventListener('click', prevSlideS);
+if(slide2.length === 1) {
+    nextBtn2.removeEventListener('click', nextSlide2);
+    prevBtn2.removeEventListener('click', prevSlide2);
 };
 // 슬라이드가 1개인 경우 다음, 이전 슬라이드로 이동할 수 없게 한다.
 
-let paginationS = document.querySelector('.slide_indic_s > ul');
-for (let i = 0; i < slideS.length; i++) {
+let pagination2 = document.querySelector('.slide_indic_2 > ul');
+for (let i = 0; i < slide2.length; i++) {
     if(i == 0) {
-        paginationS.innerHTML += `<li class="indic_s_on"></li>`;
+        pagination2.innerHTML += `<li class="indic_2_on"></li>`;
     } else {
-        paginationS.innerHTML += `<li></li>`;
+        pagination2.innerHTML += `<li></li>`;
     }  
 };
-// 인디케이터 만들어 넣기, currSlideS()에 따라 스타일이 바뀌어야 한다. 
+
+let indic2 = pagination2.querySelectorAll('li');
+function currIndic2() {
+    indic2.forEach((elem) => {elem.classList.remove('indic_2_on')});
+    indic2[currSlide2].classList.add('indic_2_on');
+}
+
+indic2.forEach((elem, i) => {
+    elem.addEventListener('click', () => {
+        currSlide2 = i;
+        slideFrame2.style.left = `-${(currSlide2 + 1) * 100}%`;
+        currIndic2();
+    });
+});
+// 인디케이터 만들어 넣기, currindic2()에 따라 스타일이 바뀌어야 한다. 
 
 
 

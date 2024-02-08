@@ -444,12 +444,12 @@
     position: relative;
     overflow: hidden;
 }
-.slide_all_s {
+.slide_all_2 {
     position: relative;
     overflow: hidden;
     display: flex;
 }
-.slide_s {
+.slide_2 {
     width: 100%;
     height: 450px;
     background-image: url(../img/now_donated_bg_1.jpg);
@@ -531,15 +531,17 @@
     border: 1px solid #dedede;
     background-color: #111111BA;
 }    
-.next_btn_s, .prev_btn_s {
+.next_btn_2, .prev_btn_2 {
     position: absolute;
     top: 50%;
 }
-.next_btn_s span:hover, .prev_btn_s span:hover {
-    border-top: 3px solid #efefef;
-    border-left: 3px solid #efefef;
+.next_btn_2 {
+    right: 15px;
 }
-.next_btn_s span, .prev_btn_s span {
+.prev_btn_2 {
+    left: 15px;
+}
+.next_btn_2 span, .prev_btn_2 span {
     display: block;
     width: 20px;
     height: 20px;
@@ -548,30 +550,28 @@
     transition: border 0.1s;
     text-indent: -99999px;
 }
-.next_btn_s {
-    right: 15px;
-}
-.next_btn_s span {
+.next_btn_2 span {
     transform: rotate(135deg);
 }
-.prev_btn_s {
-    left: 15px;
-}
-.prev_btn_s span {
+.prev_btn_2 span {
     transform: rotate(-45deg);
 }
-.slide_indic_s {
+.next_btn_2 span:hover, .prev_btn_2 span:hover {
+    border-top: 3px solid #efefef;
+    border-left: 3px solid #efefef;
+}
+.slide_indic_2 {
     position: absolute;
     bottom: 2%;
     left: 50%;
     width: 100%;
     margin-left: -50%;
 }
-.slide_indic_s ul {
+.slide_indic_2 ul {
     display: flex;
     justify-content: center;
 }
-.slide_indic_s li {
+.slide_indic_2 li {
     width: 8px;
     height: 8px;
     margin-right: 10px;
@@ -579,12 +579,15 @@
     transition: background-color 0.2s;
     background-color: #888888bb;
 }
-.indic_s_on {
+.indic_2_on {
     background-color: #cd4831 !important;
 }
-.slide_indic_s li:last-child {
+.slide_indic_2 li:last-child {
     margin-right: 0;
 }
+
+
+
 .campaign {
     margin-top: 50px;
 }
