@@ -164,58 +164,53 @@ let slideFrameWidth = slideFrame.clientWidth;
 let slideWidth = slides[0].clientWidth; 
 let currSlide = 0;
 
-let firstSlide = slides[0];
-let lastSlide = slides[slides.length - 1];
-let beforeElem = document.createElement('div');
-let afterElem = document.createElement('div');
-//첫 번째와 마지막 슬라이드 선택, 복사된 슬라이드가 들어갈 빈 노드 생성
+let nextBtn = document.querySelector('.next_btn');
+let prevBtn = document.querySelector('.prev_btn');
 
-lastSlide.classList.forEach((c) => {beforeElem.classList.add(c)});
-beforeElem.innerHTML = lastSlide.innerHTML;
-firstSlide.classList.forEach((c) => {afterElem.classList.add(c)});
-afterElem.innerHTML = firstSlide.innerHTML;
-//beforeElem과 afterElem에 각각 마지막 슬라이드, 첫 번째 슬라이드의 클래스와 내부 노드를 복사해서 붙여넣음
+let pagination = document.querySelector('.slide_indic > ul');
 
-slides[0].before(beforeElem);
-slides[slides.length - 1].after(afterElem);
-//첫 번째 슬라이드와 마지막 슬라이드의 전과 후에 각각의 요소를 배치
+
+
+function loopSlideMaker(slideParam) {
+    let beforeE = document.createElement('div');
+    let afterE = document.createElement('div');
+    let startSlide = slideParam[0];
+    let endSlide = slideParam[slideParam.length - 1];
+
+    startSlide.classList.forEach((c) => {afterE.classList.add(c)});
+    afterE.innerHTML = startSlide.innerHTML;
+    endSlide.classList.forEach((c) => {beforeE.classList.add(c)});
+    beforeE.innerHTML = endSlide.innerHTML;
+
+    slideParam[slideParam.length - 1].after(afterE);
+    slideParam[0].before(beforeE);    
+};
+//루프용 더미 노드 생성 함수
+
+loopSlideMaker(slides);
+//루프용 더미 노드 생성
 
 slideFrame.style.width = `${(slides.length + 2 ) * 100}%`;
 slideFrame.style.left = `-100%`
 //슬라이드 전체 너비의 비율을 지정(슬라이드 개수에 따른 것이므로 바뀔 필요 x), 복사된 슬라이드가 먼저 보이면 안되기에 left로 -100% 이동(비율로 값을 줬기에 오류 걱정 x) 
 
-
-let nextBtn = document.querySelector('.next_btn');
-let prevBtn = document.querySelector('.prev_btn');
-
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
-
 function nextSlide() {
-    //다음 슬라이드로 이동
-    //슬라이드 전체 left를 -100%씩 옮긴다. currSlide도 1씩 증가(0번째 슬라이드 기준 '-100%')
-    //'-500%'이 마지막 슬라이드이다.
-    //'-600%'가 되면 슬라이드가 화면 전체에 들어올 때, 원본 0번째 슬라이드가 위치한 left 값인 -100%로 돌아오게 한다 (실행되는 순서에 주의할 것)
-    //'-600%'가 되면 currSlide는 0이 되어야 한다. currSlide는 가장 마지막 줄에 넣는 것이 자연스럽다.
     let slideFrameLeft = parseInt(slideFrame.style.left);
 
     currSlide++;
 
     if(currSlide == slides.length) {
         slideFrame.style.left = `${slideFrameLeft - 100}%`;
-        
         setTimeout(() => {
             slideFrame.classList.add('slide_animate');
             slideFrame.style.left = '-100%';
         }, 200);
-
         currSlide = 0;        
     } else {
         slideFrame.style.left = `${slideFrameLeft - 100}%`;
     }
 
     slideFrame.classList.remove('slide_animate')
-
     currIndic();
 }; 
 //다음 슬라이드로 이동
@@ -227,25 +222,19 @@ function prevSlide() {
 
     if(currSlide < 0) {
         slideFrame.style.left = `${slideFrameLeft + 100}%`;
-        
         setTimeout(() => {
             slideFrame.classList.add('slide_animate');
             slideFrame.style.left = `-${slides.length * 100}%`;
         }, 200);
-
-        currSlide = slides.length - 1;
-        
+        currSlide = slides.length - 1;    
     } else {
         slideFrame.style.left = `${slideFrameLeft + 100}%`;
     };
 
     slideFrame.classList.remove('slide_animate');
-
     currIndic();
 };
 //이전 슬라이드로 이동
-
-let pagination = document.querySelector('.slide_indic > ul');
 
 for (let i = 0; i < slides.length; i++) {
     if (i == 0) {
@@ -256,12 +245,12 @@ for (let i = 0; i < slides.length; i++) {
 };
 //페이지네이션 생성
 
-let indics = document.querySelectorAll('.slide_indic ul li') 
+let indics = pagination.querySelectorAll('li');
 
-currIndic();
+currIndic(); //인디케이터 시작 위치로 가져오기
 
 function currIndic() {
-    indics.forEach((s) => {s.classList.remove('indic_on')});
+    indics.forEach((elem) => {elem.classList.remove('indic_on')});
     indics[currSlide].classList.add('indic_on')
 };
 //현재 슬라이드의 순번에 따라 인디케이터 스타일 변화
@@ -275,51 +264,67 @@ indics.forEach((elem, i) => {
 });
 // 인디케이터 클릭 시 해당 index의 슬라이드로 이동
 
-window.addEventListener('load', () => {
-    let autoLoopSlide = setInterval(nextSlide, 5000);
-    slideFrame.addEventListener('mouseover', function() {
-        clearInterval(autoLoopSlide);
-        console.log('슬라이드 멈춤');
+if(slides.length > 1) {
+    window.addEventListener('load', () => {
+        let autoLoopSlide = setInterval(nextSlide, 5000);
+        slideFrame.addEventListener('mouseover', function() {
+            clearInterval(autoLoopSlide);
+            console.log('슬라이드 멈춤');
+        });
+        slideFrame.addEventListener('mouseout', function() {
+            autoLoopSlide = setInterval(nextSlide, 5000)
+            console.log('슬라이드 다시 시작');
+        });
     });
-    slideFrame.addEventListener('mouseout', function() {
-        autoLoopSlide = setInterval(nextSlide, 5000)
-        console.log('슬라이드 다시 시작');
-    });
-});
+};
 //5초 마다 다음 슬라이드로 이동, 마우스 오버 시에 멈춤, 마우스 아웃 시에 재시작
 
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+// 클릭 시 다음, 이전 슬라이드 이동
+
+if(slides.length <= 1) {
+    nextBtn.removeEventListener('click', nextSlide);
+    prevBtn.removeEventListener('click', prevSlide);
+};
+// 슬라이드가 1개 이하이면 버튼을 통해 슬라이드 이동을 할 수 없게 한다
 
 let startPoint = 0;
 let endPoint = 0;
-//변수 초기화
+// 드래그, 스와이프용 시작과 종료 지점 변수
 
-slideFrame.addEventListener('mousedown', (e) => {
-    startPoint = e.pageX;
-});
-slideFrame.addEventListener('mouseup', (e) => {
-    endPoint = e.pageX;
-    if(startPoint < endPoint) {
-        prevSlide();
-    } else if(startPoint > endPoint) {
-        nextSlide()
-    }
-});
-// 드래그 동작 (pc용)
+if(slides.length > 1) {
+    slideFrame.addEventListener('mousedown', (e) => {
+        startPoint = e.pageX;
+    });
+    slideFrame.addEventListener('mouseup', (e) => {
+        endPoint = e.pageX;
+        if(startPoint < endPoint) {
+            prevSlide();
+        } else if(startPoint > endPoint) {
+            nextSlide()
+        }
+    });
+    // 드래그 동작 (pc용)
+    
+    slideFrame.addEventListener('touchstart', (e) => {
+        startPoint = e.touches[0].pageX;
+        console.log(startPoint);
+    });
+    slideFrame.addEventListener('touchend', (e) => {
+        endPoint = e.changedTouches[0].pageX;
+        console.log(endPoint);
+        if(startPoint < endPoint) {
+            prevSlide();
+        } else if(startPoint > endPoint) {
+            nextSlide()
+        }
+    });
+    // 스와이프 동작 (모바일용)
+};
+// 슬라이드(대형) end
 
-slideFrame.addEventListener('touchstart', (e) => {
-    startPoint = e.touches[0].pageX;
-    console.log(startPoint);
-});
-slideFrame.addEventListener('touchend', (e) => {
-    endPoint = e.changedTouches[0].pageX;
-    console.log(endPoint);
-    if(startPoint < endPoint) {
-        prevSlide();
-    } else if(startPoint > endPoint) {
-        nextSlide()
-    }
-});
-// 스와이프 동작 (모바일용)
+
 
 let donateDate = document.querySelector('.date');
 let today = new Date();
@@ -335,12 +340,6 @@ donateDate.innerHTML = `${todayYear}. ${todayMonth}. ${todayDay} 기준`;
 
 
 
-//container용 범용 슬라이드
-//1. 전체 슬라이드, 개별 슬라이드 너비 저장
-//2. 첫 번째 슬라이드 이전에는 마지막 슬라이드, 마지막 슬라이드 다음에는 첫 번째 슬라이드가 오도록 새로운 태그 생성
-//3. 다음, 이전으로 이동하는 슬라이드 함수 생성
-//4. 자동 루프 함수 생성
-
 let slideFrame2 = document.querySelector('.slide_all_2');
 let slide2 = document.querySelectorAll('.slide_2');
 //슬라이드 전체, 개별 슬라이드 전체
@@ -350,18 +349,8 @@ let slide2Width = slide2[0].clientWidth;
 let currSlide2 = 0;
 //슬라이드 전체 너비, 개별 슬라이드 너비 
 
-let beforeE = document.createElement('div');
-let afterE = document.createElement('div');
-let startSlide = slide2[0];
-let endSlide = slide2[slide2.length - 1];
-
-startSlide.classList.forEach((c) => {afterE.classList.add(c)});
-afterE.innerHTML = startSlide.innerHTML;
-endSlide.classList.forEach((c) => {beforeE.classList.add(c)});
-beforeE.innerHTML = endSlide.innerHTML;
-
-slide2[slide2.length - 1].after(afterE);
-slide2[0].before(beforeE);
+loopSlideMaker(slide2);
+//루프용 더미 노드 생성
 
 slideFrame2.style.width = '';
 slideFrame2.style.width = `${(slide2.length + 2) * 100}%`; //전체 슬라이드 너비는 루프 슬라이드용 슬라이드까지 합친 너비여야 한다.
@@ -400,7 +389,7 @@ function prevSlide2() {
     };
 };
 
-if(slide2.length === 1) {
+if(slide2.length <= 1) {
     nextBtn2.removeEventListener('click', nextSlide2);
     prevBtn2.removeEventListener('click', prevSlide2);
 };
@@ -428,7 +417,57 @@ indic2.forEach((elem, i) => {
         currIndic2();
     });
 });
-// 인디케이터 만들어 넣기, currindic2()에 따라 스타일이 바뀌어야 한다. 
+// 인디케이터 만들어 넣기, currindic2()에 따라 스타일이 바뀌어야 한다.
+
+if(slide2.length > 1) {
+    window.addEventListener('load', () => {
+        let autoLoopSlide = setInterval(nextSlide2, 5000);
+        slideFrame2.addEventListener('mouseover', function() {
+            clearInterval(autoLoopSlide);
+            console.log('슬라이드 멈춤');
+        });
+        slideFrame2.addEventListener('mouseout', function() {
+            autoLoopSlide = setInterval(nextSlide2, 5000)
+            console.log('슬라이드 다시 시작');
+        });
+    });
+};
+//5초 마다 다음 슬라이드로 이동, 마우스 오버 시에 멈춤, 마우스 아웃 시에 재시작
+
+let startPoint2 = 0;
+let endPoint2 = 0;
+// 드래그, 스와이프용 시작과 종료 지점 변수
+
+if(slide2.length > 1) {
+    slideFrame2.addEventListener('mousedown', (e) => {
+        startPoint2 = e.pageX;
+    });
+    slideFrame2.addEventListener('mouseup', (e) => {
+        endPoint2 = e.pageX;
+        if(startPoint2 < endPoint2) {
+            prevSlide2();
+        } else if(startPoint2 > endPoint2) {
+            nextSlide2()
+        }
+    });
+    // 드래그 동작 (pc용)
+    
+    slideFrame2.addEventListener('touchstart', (e) => {
+        startPoint2 = e.touches[0].pageX;
+        console.log(startPoint2);
+    });
+    slideFrame2.addEventListener('touchend', (e) => {
+        endPoint2 = e.changedTouches[0].pageX;
+        console.log(endPoint2);
+        if(startPoint2 < endPoint2) {
+            prevSlide2();
+        } else if(startPoint2 > endPoint2) {
+            nextSlide2()
+        }
+    });
+    // 스와이프 동작 (모바일용)
+};
+//슬라이드(소형) end
 
 
 
