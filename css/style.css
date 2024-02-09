@@ -434,11 +434,11 @@
     color: #fff;
     background-color: #cd4831;
 }
-.now_donated {
-    margin: 0 0 50px 0;
-}
+/* 투명 경영, 사업보고서 */
+
 #now_donated {
     position: relative;
+    margin: 0 0 50px 0;
     overflow: hidden;
 }
 .slide_all_2 {
@@ -582,20 +582,19 @@
 .slide_indic_2 li:last-child {
     margin-right: 0;
 }
+/* 진행중인 모금 현황 */
 
-
-
-.campaign {
+#campaign {
     margin-top: 50px;
 }
-.campaign h2 {
+#campaign h2 {
     margin-bottom: 25px;
     text-align: center;
     font-size: 20px;
     font-weight: 900;
     color: #cd4831;
 }
-.campaign span {
+#campaign h2 span {
     font-size: 18px;
     color: #111;
 }
@@ -626,13 +625,72 @@
 .bg_title {
     width: 90%;
     height: 80px;
-    margin: 0 auto 100px;
+    margin: 0 auto;
     text-indent: -99999px;
     background: url(../img/bg_ko.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
+/* 캠페인 영상 */
+
+#story {
+    margin: 0 auto;  
+}
+.story_title {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    background: url(../img/story_paint.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.story_title_inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 60%);
+}
+.story_title_text {
+    margin-bottom: 15px;
+    line-height: 1.5em;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #fefefe;
+}
+.story_view_more {
+    padding: 10px 16px;
+    border-radius: 50px;
+    letter-spacing: -1px;
+    font-size: 13px;
+    font-weight: 900;
+    background-color: #fefefe;
+}
+.story_view_more span, .story_view_more span::after {
+    width: 2px;
+    height: 10px;
+    border-radius: 50px;
+    background-color: #cd4831;
+}
+.story_view_more span {
+    display: inline-block;
+    margin: 0 10px 0 12px;
+    transform: translate(5px, 4px);
+    text-indent: -99999px;
+}
+.story_view_more span::after {
+    display: block;
+    content: "";
+    transform: translate(0, -17px) rotate(90deg);
+}
+
+
+
 
 
 /* 태블릿 */
