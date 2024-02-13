@@ -34,10 +34,6 @@ let gnbScrollWrap = document.querySelector('.gnb_scroll_wrap');
 let gnbExit = document.querySelector('.gnb_exit');
 let gnbBtn = document.querySelector('.gnb_btn');
 
-let d0Titles = document.querySelectorAll('.menu_d0_title');
-let d1Titles = document.querySelectorAll('.menu_d1_title');
-let d2Titles = document.querySelectorAll('.menu_d2_title');
-
 gnbBtn.addEventListener('click', () => {
     gnbWrap.style.zIndex = '100';
     gnbWrap.classList.add('gnb_open_bg');
@@ -68,6 +64,9 @@ gnbWrap.addEventListener('click', (e) => {
 });
 // 메뉴 창 닫기 (메뉴 외부를 클릭할 경우에도)
 
+let d0Titles = document.querySelectorAll('.menu_d0_title');
+let d1Titles = document.querySelectorAll('.menu_d1_title');
+let d2Titles = document.querySelectorAll('.menu_d2_title');
 
 function gnbClassRemoveD0(titles, lists, titleSymbols) {
     titles.forEach((elem) => {
@@ -161,12 +160,9 @@ d2Titles.forEach((d2Title) => {
 //아코디언 메뉴
 
 
-
-
 /* 메인 슬라이드 */
 let slideFrame = document.querySelector('.slide_all');
 let slides = document.querySelectorAll('.slide');
-
 let slideFrameWidth = slideFrame.clientWidth;
 let slideWidth = slides[0].clientWidth; 
 let currSlide = 0;
@@ -175,7 +171,6 @@ let nextBtn = document.querySelector('.next_btn');
 let prevBtn = document.querySelector('.prev_btn');
 
 let pagination = document.querySelector('.slide_indic > ul');
-
 
 
 function loopSlideMaker(slideParam) {
@@ -203,9 +198,7 @@ slideFrame.style.left = `-100%`
 
 function nextSlide() {
     let slideFrameLeft = parseInt(slideFrame.style.left);
-
     currSlide++;
-
     if(currSlide == slides.length) {
         slideFrame.style.left = `${slideFrameLeft - 100}%`;
         setTimeout(() => {
@@ -216,7 +209,6 @@ function nextSlide() {
     } else {
         slideFrame.style.left = `${slideFrameLeft - 100}%`;
     }
-
     slideFrame.classList.remove('slide_animate')
     currIndic();
 }; 
@@ -224,9 +216,7 @@ function nextSlide() {
 
 function prevSlide() {
     let slideFrameLeft = parseInt(slideFrame.style.left);
-
     currSlide--;
-
     if(currSlide < 0) {
         slideFrame.style.left = `${slideFrameLeft + 100}%`;
         setTimeout(() => {
@@ -237,7 +227,6 @@ function prevSlide() {
     } else {
         slideFrame.style.left = `${slideFrameLeft + 100}%`;
     };
-
     slideFrame.classList.remove('slide_animate');
     currIndic();
 };
@@ -477,7 +466,7 @@ if(slide2.length > 1) {
 //슬라이드(소형) end
 
 
-
+//상위 항목을 닫으면 하위 항목도 자동으로 닫힌다.
 
 
 //노드의 속성을 가져올 때 주의할 점 : 예를 들어 어떤 노드의 width 값을 가져온다고 했을 때, element.style.width는 작성된 시점의 고정된 값을 가져오지만, element.style.width를 값으로 할당한 변수 elementWidth는 상황에 따라 변화된 element.style.width의 값이 할당된다.

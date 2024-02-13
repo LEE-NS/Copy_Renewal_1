@@ -186,8 +186,8 @@
     max-height: 0vh;
     visibility: hidden;
     overflow: hidden;
+    transition: all 0.3s;
 }
-
 .menu_d1_title {
     position: relative;
     height: 52px;
@@ -207,6 +207,7 @@
     max-height: 0vh;
     visibility: hidden;
     overflow: hidden;
+    transition: all 0.3s;
 }
 
 .menu_d2_title {
@@ -223,6 +224,7 @@
     max-height: 0vh;
     visibility: hidden;
     overflow: hidden;
+    transition: all 0.3s;
 }
 .menu_d3_item {
     height: 42px;
@@ -249,7 +251,7 @@
 }
 .plus .act {
     transform: rotate(0deg);
-    transition: transform 0.1s;
+    transition: transform 0.3s;
 }
 .plus span:nth-child(2) {
     transform: rotate(90deg);
@@ -259,7 +261,7 @@
 .active {
     max-height: 300vh;
     visibility: visible;
-    transition: all 1.5s;
+    transition: all 1s;
 }
 .open_d0 {
     border-left: 5px solid #f6805f !important;
