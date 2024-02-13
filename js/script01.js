@@ -38,8 +38,18 @@ let d0Titles = document.querySelectorAll('.menu_d0_title');
 let d1Titles = document.querySelectorAll('.menu_d1_title');
 let d2Titles = document.querySelectorAll('.menu_d2_title');
 
-
+gnbBtn.addEventListener('click', () => {
+    gnbWrap.style.zIndex = '100';
+    gnbWrap.classList.add('gnb_open_bg');
+    gnbScrollWrap.classList.add('gnb_open');
+    document.body.style.overflow = 'hidden';
+});
+// 메뉴 창 열기
+// + Modal 열려있을 시 메인 페이지 스크롤 방지
 gnbExit.addEventListener('click', () => {
+    setTimeout(() => {
+        gnbWrap.style.zIndex = '0';
+    }, 300);
     gnbWrap.classList.remove('gnb_open_bg');
     gnbScrollWrap.classList.remove('gnb_open');
     document.body.style.overflow = 'auto';
@@ -48,19 +58,16 @@ gnbExit.addEventListener('click', () => {
 gnbWrap.addEventListener('click', (e) => {
     let gnbWrapWidth = parseInt(window.getComputedStyle(gnbWrap).width);
     if(e.pageX > (gnbWrapWidth * 0.7)) {
+        setTimeout(() => {
+            gnbWrap.style.zIndex = '0';
+        }, 300);
         gnbWrap.classList.remove('gnb_open_bg');
         gnbScrollWrap.classList.remove('gnb_open');
         document.body.style.overflow = 'auto';
     }
 });
 // 메뉴 창 닫기 (메뉴 외부를 클릭할 경우에도)
-gnbBtn.addEventListener('click', () => {
-    gnbWrap.classList.add('gnb_open_bg');
-    gnbScrollWrap.classList.add('gnb_open');
-    document.body.style.overflow = 'hidden';
-});
-// 메뉴 창 열기
-// + Modal 열려있을 시 메인 페이지 스크롤 방지
+
 
 function gnbClassRemoveD0(titles, lists, titleSymbols) {
     titles.forEach((elem) => {
@@ -150,8 +157,8 @@ d1Titles.forEach((d1Title) => {
 d2Titles.forEach((d2Title) => {
     d2Title.addEventListener('click', () => accrdCtrl(d2Title, d2Titles, '.menu_d3', '.menu_d2_title .act'));
 });
-
-// 아코디언 메뉴
+//클릭 시 각 항목에 맞는 함수 동작
+//아코디언 메뉴
 
 
 
@@ -318,7 +325,7 @@ if(slides.length > 1) {
             prevSlide();
         } else if(startPoint > endPoint) {
             nextSlide()
-        }
+        };
     });
     // 스와이프 동작 (모바일용)
 };

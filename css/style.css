@@ -91,19 +91,19 @@
     color: #cd4831;
     background-color: #fff;
 }
+
 /* 모바일 - header - GNB */
 .gnb_wrap {
-    width: 0;
+    width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
     background-color: transparent;
     transition: background-color 0.3s;
 }
 .gnb_scroll_wrap {
-    width: 70%;
+    width: 0;
     height: 100%;
     margin-left: -70%;
     border: 0;
@@ -159,15 +159,13 @@
     border: 0;
 }
 .gnb_open {
+    width: 70%;
     margin-left: 0;
 }
 .gnb_open_bg {
-    width: 100%;
     background-color: #111111BA;
 }
 /* 모바일 - GNB 메뉴 창 */
-
-
 
 .menu_d0_item {
     border-bottom: 1px solid #ddd;
