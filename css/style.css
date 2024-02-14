@@ -635,7 +635,7 @@
 /* 캠페인 영상 */
 
 #story {
-    margin: 0 auto;  
+    margin: 0 auto 20px;  
 }
 .story_title {
     width: 100%;
@@ -688,7 +688,37 @@
     content: "";
     transform: translate(0, -17px) rotate(90deg);
 }
-
+.story_slide {
+    padding: 20px;
+}
+.slide_all_3 {
+    position: relative;
+    overflow: auto;
+    display: flex;
+}
+.slide_3 {
+    width: 100%;
+    margin-right: 20px;    
+}
+.bg_imgs {
+    width: 230px;
+    height: 230px;
+    margin-bottom: 13px;
+    text-indent: -99999px;
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+.img_title {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    word-spacing: -1px;
+}
+.story_bg1 { background-image: url(../img/story_01.jpg); }
+.story_bg2 { background-image: url(../img/story_02.jpg); }
+.story_bg3 { background-image: url(../img/story_03.jpg); }
 
 
 
